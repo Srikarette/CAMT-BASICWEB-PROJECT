@@ -54,6 +54,7 @@ const checkWin = () => {
 
 // Helper function to reset the board
 const resetBoard = () => {
+  document.getElementsByClassName("message")[0].innerText = "";
     cells.forEach(cell => {
       cell.classList.remove('red', 'yellow');
       cell.classList.add('empty');
