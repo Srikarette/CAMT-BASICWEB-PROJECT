@@ -102,7 +102,7 @@ const resetBoard = () => {
 
 // Add event listener to each cell
 cells.forEach((cell) => {
-  cell.addEventListener("click", (e) => {
+  cell.addEventListener("click", () => {
     const columnIndex = Array.from(cell.parentNode.children).indexOf(cell);
     let rowIndex = 0;
     if(message.innerText == ""){
@@ -120,11 +120,13 @@ cells.forEach((cell) => {
       message.textContent = `${currentPlayer.toUpperCase()} wins!`;
       resetButton.disabled = false;
     } else {
-      if (currentPlayer === "red") {
-        currentPlayer = "yellow";
-      } else {
-        currentPlayer = "red";
-      }
+        if(rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)){
+          if (currentPlayer === "red") {
+            currentPlayer = "yellow";
+          } else {
+            currentPlayer = "red";
+          }
+        }
     }
     playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
   });
