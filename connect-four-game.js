@@ -4,8 +4,15 @@ const rows = document.querySelectorAll(".row");
 const message = document.querySelector(".message");
 const playerTurn = document.getElementsByClassName("player-turn")[0];
 const resetButton = document.querySelector(".reset-button button");
+const p1Time = document.getElementsByClassName("p1-time")[0];
+const p2Time = document.getElementsByClassName("p2-time")[0];
 
 let currentPlayer = "red";
+var p1 = [4, 30];
+var p2 = [4, 30];
+p1 = setTime(p1);
+p2 = setTime(p2);
+var myInterval;
 
 // Helper function to check for four in a row
 const checkFour = (a, b, c, d) => {
@@ -88,7 +95,10 @@ const checkWin = () => {
 
 // Helper function to reset the board
 const resetBoard = () => {
+  clearInterval(myInterval);
   document.getElementsByClassName("message")[0].innerText = "";
+  p1Time.innerText = "";
+  p2Time.innerText = "";
   message.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
   cells.forEach((cell) => {
     cell.classList.remove("red", "yellow");
@@ -98,14 +108,30 @@ const resetBoard = () => {
   playerTurn.textContent = `Current player: ${currentPlayer.toUpperCase()}`;
   message.textContent = "";
   resetButton.removeAttribute("disabled");
+  p1 = [4, 30];
+  p2 = [4, 30];
+  p1 = setTime(p1);
+  p2 = setTime(p2);
 };
 
 // Add event listener to each cell
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
+    clearInterval(myInterval);
+    if (currentPlayer == "red") {
+      myInterval = setInterval(() => {
+        p1 = p1 - 1000;
+        displayTimer(p1, currentPlayer);
+      }, 900);
+    } else {
+      myInterval = setInterval(() => {
+        p2 = p2 - 1000;
+        displayTimer(p2, currentPlayer);
+      }, 900);
+    }
     const columnIndex = Array.from(cell.parentNode.children).indexOf(cell);
     let rowIndex = 0;
-    if(message.innerText == ""){
+    if (message.innerText == "") {
       for (let i = rows.length - 1; i >= 0; i--) {
         if (rows[i].children[columnIndex].classList.contains("empty")) {
           rows[i].children[columnIndex].classList.remove("empty");
@@ -118,15 +144,18 @@ cells.forEach((cell) => {
 
     if (checkWin()) {
       message.textContent = `${currentPlayer.toUpperCase()} wins!`;
+      clearInterval(myInterval);
       resetButton.disabled = false;
     } else {
-        if(rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)){
-          if (currentPlayer === "red") {
-            currentPlayer = "yellow";
-          } else {
-            currentPlayer = "red";
-          }
+      if (
+        rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)
+      ) {
+        if (currentPlayer === "red") {
+          currentPlayer = "yellow";
+        } else {
+          currentPlayer = "red";
         }
+      }
     }
     playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
   });
@@ -141,3 +170,22 @@ resetButton.addEventListener("click", (e) => {
 window.onload = function () {
   playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
 };
+
+function setTime(playerTime) {
+  const now = new Date().getTime(); //12.45
+  const later = new Date(now + playerTime[0] * 60000 + playerTime[1] * 1000); //12.50
+  return later - now; //12.50 - 12.45 = 5 === 50000000
+}
+function displayTimer(timer, current) {
+  if (current == "red") {
+    p1Time.innerText =
+      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)) +
+      " : " +
+      Math.floor((timer % (1000 * 60)) / 1000);
+  } else {
+    p2Time.innerText =
+      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)) +
+      " : " +
+      Math.floor((timer % (1000 * 60)) / 1000);
+  }
+}
