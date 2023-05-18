@@ -23,6 +23,8 @@ body{
     border-radius: 50%;
     border: 1px solid black;
     cursor: pointer;
-    background-color: greenyellow;
-    background-image: url("Assert/mute-icon.jpg");
+    /* background-color: greenyellow; */
+    background-image: url("/Assert/mute-icon.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
