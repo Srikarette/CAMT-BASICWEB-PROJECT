@@ -4,10 +4,11 @@ const rows = document.querySelectorAll(".row");
 const message = document.querySelector(".message");
 const playerTurn = document.getElementsByClassName("player-turn")[0];
 const resetButton = document.querySelector(".reset-button button");
-
+const p1Time = document.querySelector(".p1timer");
+const p2Time = document.querySelector(".p2timer");
 let currentPlayer = "red";
-var p1 = [4, 30];
-var p2 = [4, 30];
+var p1 = [2, 00];
+var p2 = [2, 00];
 p1 = setTime(p1);
 p2 = setTime(p2);
 var myInterval;
