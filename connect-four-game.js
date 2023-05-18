@@ -4,8 +4,6 @@ const rows = document.querySelectorAll(".row");
 const message = document.querySelector(".message");
 const playerTurn = document.getElementsByClassName("player-turn")[0];
 const resetButton = document.querySelector(".reset-button button");
-const p1Time = document.getElementsByClassName("p1-time")[0];
-const p2Time = document.getElementsByClassName("p2-time")[0];
 
 let currentPlayer = "red";
 
@@ -107,7 +105,7 @@ cells.forEach((cell) => {
   cell.addEventListener("click", () => {
     const columnIndex = Array.from(cell.parentNode.children).indexOf(cell);
     let rowIndex = 0;
-    if (message.innerText == "") {
+    if(message.innerText == ""){
       for (let i = rows.length - 1; i >= 0; i--) {
         if (rows[i].children[columnIndex].classList.contains("empty")) {
           rows[i].children[columnIndex].classList.remove("empty");
@@ -120,18 +118,15 @@ cells.forEach((cell) => {
 
     if (checkWin()) {
       message.textContent = `${currentPlayer.toUpperCase()} wins!`;
-      clearInterval(myInterval);
       resetButton.disabled = false;
     } else {
-      if (
-        rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)
-      ) {
-        if (currentPlayer === "red") {
-          currentPlayer = "yellow";
-        } else {
-          currentPlayer = "red";
+        if(rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)){
+          if (currentPlayer === "red") {
+            currentPlayer = "yellow";
+          } else {
+            currentPlayer = "red";
+          }
         }
-      }
     }
     playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
   });
@@ -146,22 +141,3 @@ resetButton.addEventListener("click", (e) => {
 window.onload = function () {
   playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
 };
-
-function setTime(playerTime) {
-  const now = new Date().getTime(); //12.45
-  const later = new Date(now + playerTime[0] * 60000 + playerTime[1] * 1000); //12.50
-  return later - now; //12.50 - 12.45 = 5 === 50000000
-}
-function displayTimer(timer, current) {
-  if (current == "red") {
-    p1Time.innerText =
-      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)) +
-      " : " +
-      Math.floor((timer % (1000 * 60)) / 1000);
-  } else {
-    p2Time.innerText =
-      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)) +
-      " : " +
-      Math.floor((timer % (1000 * 60)) / 1000);
-  }
-}
