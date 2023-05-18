@@ -146,3 +146,25 @@ resetButton.addEventListener("click", (e) => {
 window.onload = function () {
   playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
 };
+<<<<<<< HEAD
+=======
+
+function setTime(playerTime) {
+  const now = new Date().getTime(); //12.45
+  const later = new Date(now + playerTime[0] * 60000 + playerTime[1] * 1000); //12.50
+  return later - now; //12.50 - 12.45 = 5 === 50000000
+}
+function displayTimer(timer, current) {
+  if (current == "red") {
+    p1Time.innerText =
+      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)) +
+      " : " +
+      Math.floor((timer % (1000 * 60)) / 1000);
+  } else {
+    p2Time.innerText =
+      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)) +
+      " : " +
+      Math.floor((timer % (1000 * 60)) / 1000);
+  }
+}
+>>>>>>> parent of 8b4c3af (Update connect-four-game.js)
