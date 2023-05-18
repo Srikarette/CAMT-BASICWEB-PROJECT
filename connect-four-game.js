@@ -146,8 +146,6 @@ resetButton.addEventListener("click", (e) => {
 window.onload = function () {
   playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
 };
-<<<<<<< HEAD
-=======
 
 function setTime(playerTime) {
   const now = new Date().getTime(); //12.45
@@ -167,4 +165,3 @@ function displayTimer(timer, current) {
       Math.floor((timer % (1000 * 60)) / 1000);
   }
 }
->>>>>>> parent of 8b4c3af (Update connect-four-game.js)
