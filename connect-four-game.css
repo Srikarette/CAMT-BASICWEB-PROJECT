@@ -1,21 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0; padding: 0;
+  font-family: 'Righteous', cursive;
+}
+
 .board {
+  max-width: 520px;
+  max-height: fit-content;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  border: 1px rgb(255, 250, 250) solid;
-  width: 520px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-top: 30px;
-  margin-bottom: 50px;
+
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+  background: #324ea2;
+  border: 10px solid #29469c;
   border-radius: 10px;
 }
+
+
 .connect-four {
   display: flex;
   flex-direction: column;
-  background-color: rgb(36, 31, 78);
+  background: #22346e;
   color: aliceblue;
   height: 600px;
   margin-top: 20px;
@@ -30,22 +41,32 @@
 .cell {
   width: 60px;
   height: 60px;
-  border: 1px solid black;
   border-radius: 500px;
   margin: 5px;
 }
 
 .empty {
-  background-color: white;
+  background: #283a77;
+  border: 5px solid #2a44a0;
 }
 
 .red {
-  background-color: red;
+  background: linear-gradient(-90deg, rgb(152, 17, 17), #e31111) padding-box,
+              linear-gradient(90deg, rgb(152, 17, 17), #e31111) border-box;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  border: 8px solid transparent;
+  border-radius: 50px;
+  
 }
 
 .yellow {
-  background-color: yellow;
+  background: linear-gradient(-90deg, #ff8400, #e8c900) padding-box,
+              linear-gradient(90deg, #ff8400, #e8c900) border-box;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  border: 8px solid transparent;
+  border-radius: 50px;
 }
+
 body {
   margin: 0;
   background-color: rgb(35, 34, 65);
@@ -56,4 +77,132 @@ h1 {
 }
 .row:hover{
   background-color: black;
+}
+
+
+/* flex elements */
+.flex-container {
+  height: 90vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.first-content, .second-content { width: 25%; height: 100%; }
+.board-content { 
+  width: 50%; 
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 10px;
+}
+
+/* header elements */
+.header-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  position: relative;
+}
+
+.head-content { 
+  padding: 20px; 
+  
+}
+.head-content p { 
+  font-size: 2vh; 
+  color: rgba(255,255,255,0.9);
+}
+
+.head-content h1 {
+  padding: 0;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgba(255,255,255,0.7);
+}
+
+.head-logo > img {
+  width: 70px;
+  height: 70px;
+  position: relative;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* first elements */
+.status-elements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: fit-content;
+}
+
+.status-elements > div {
+  margin: 30px 5px;
+}
+
+
+.player-1-icon, .player-2-icon {
+  width: 70px;
+  height: 70px;
+  background: white;
+  border-radius: 100%;
+}
+
+.player-1-details, .player-2-details {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  flex-direction: column;
+}
+.p1-time, .p2-time {
+  width: 150px;
+
+  color: white;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  border-radius: 5px;
+}
+
+.p1-hp, .p2-hp {
+  margin-top: 3px;
+  width: 150px;
+  height: 5px;
+  background: rgb(40, 196, 45);
+  border-radius: 1px;
+}
+
+
+/* betal elements */
+.betal-elements {
+  position: relative;
+}
+
+.betal-standy {
+  position: absolute;
+  z-index: 1;
+  width: 250px;
+  height: 520px;
+}
+
+.betal-flex {
+  position: relative;
+  z-index: 10;
+  width: 250px;
+  height: 500px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.betal-flex > div {
+  width: 100px;
+  height: 20px;
+  background-image: url('./red-betal.png');
+  border: 2px solid rgba(0,0,0,0.3);
+  border-radius: 5px;
 }
