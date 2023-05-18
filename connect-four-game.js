@@ -97,8 +97,8 @@ const checkWin = () => {
 const resetBoard = () => {
   clearInterval(myInterval);
   document.getElementsByClassName("message")[0].innerText = "";
-  p1Time.innerText = "";
-  p2Time.innerText = "";
+  p1Time.innerText = " 02 : 00 ";
+  p2Time.innerText = " 02 : 00 ";
   message.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
   cells.forEach((cell) => {
     cell.classList.remove("red", "yellow");
@@ -147,8 +147,11 @@ cells.forEach((cell) => {
       Swal.fire({
         title: `${currentPlayer.toUpperCase()} wins!`,
         icon: 'success',
-        confirmButtonText: 'Close'
-      })
+        confirmButtonText: 'OK'
+      }).then(() => {
+        resetBoard();
+      });
+      
       resetButton.disabled = false;
     } else {
         if(rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)){
