@@ -179,13 +179,13 @@ function setTime(playerTime) {
 function displayTimer(timer, current) {
   if (current == "red") {
     p1Time.innerText =
-      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)) +
+      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0') +
       " : " +
-      Math.floor((timer % (1000 * 60)) / 1000);
+      Math.floor((timer % (1000 * 60)) / 1000).toString().padStart(2, '0');
   } else {
     p2Time.innerText =
-      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)) +
+      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0') +
       " : " +
-      Math.floor((timer % (1000 * 60)) / 1000);
+      Math.floor((timer % (1000 * 60)) / 1000).toString().padStart(2, '0');
   }
 }
