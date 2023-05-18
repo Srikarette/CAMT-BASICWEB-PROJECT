@@ -4,8 +4,8 @@ const rows = document.querySelectorAll(".row");
 const message = document.querySelector(".message");
 const playerTurn = document.getElementsByClassName("player-turn")[0];
 const resetButton = document.querySelector(".reset-button button");
-const p1Time = document.querySelector(".p1timer");
-const p2Time = document.querySelector(".p2timer");
+const p1Time = document.querySelector(".p1-time");
+const p2Time = document.querySelector(".p2-time");
 let currentPlayer = "red";
 var p1 = [2, 00];
 var p2 = [2, 00];
@@ -107,8 +107,8 @@ const resetBoard = () => {
   playerTurn.textContent = `Current player: ${currentPlayer.toUpperCase()}`;
   message.textContent = "";
   resetButton.removeAttribute("disabled");
-  p1 = [4, 30];
-  p2 = [4, 30];
+  p1 = [2, 00];
+  p2 = [2, 00];
   p1 = setTime(p1);
   p2 = setTime(p2);
 };
@@ -172,6 +172,7 @@ function setTime(playerTime) {
   const later = new Date(now + playerTime[0] * 60000 + playerTime[1] * 1000); //12.50
   return later - now; //12.50 - 12.45 = 5 === 50000000
 }
+
 function displayTimer(timer, current) {
   if (current == "red") {
     p1Time.innerText =

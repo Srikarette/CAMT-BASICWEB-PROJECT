@@ -2,77 +2,130 @@
 <html>
   <head>
     <title>Connect 4 Game</title>
-
     <link rel="stylesheet" href="connect-four-game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Kanit:wght@100;400&family=Righteous&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="connect-four">
-        <h1>Connect Four</h1>
-        <div class="board">
-          <div class="p1timer"></div>
-          <div class="p2timer"></div>
-          <div class="row">
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-          </div>
-          <div class="row">
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-          </div>
-          <div class="row">
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-          </div>
-          <div class="row">
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-          </div>
-          <div class="row">
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-          </div>
-          <div class="row">
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-            <div class="cell empty"></div>
-          </div>
-          
-        </div>
-        <div class="message"></div>
-        <div class="player-turn"></div>
-        <div class="reset-button"><button>Reset Board</button></div>
-      </div>
-      
+    
 
+    <!-- main section position -->
+      <div class="flex-container">
+
+        <div class="first-content">
+          <div class="status-elements">
+            <div class="player-1-icon"></div>
+            <div class="player-1-details">
+              <p>Player 1: Test name</p>
+              <div class="p1-time">2:00</div>
+              <div class="p1-hp"></div>
+            </div>
+            
+            <div class="betel-elements">
+              <img src="./inside.png" class="betal-standy">
+              <div class="betal-flex">
+                <!-- script -->
+
+              </div>
+            </div>
+          </div>  
+        </div>
+
+        <div class="board-content">
+          
+          <!-- header position-->
+          <div class="header-container">
+            <div class="head-logo">
+              <img src="./logo.png">
+            </div>
+            <div class="head-content">
+              <h1>The Connect 4</p>
+              <p>Connect with your friends, end with your girl.</p>
+            </div>
+          </div>
+
+          <div class="board">
+            <div class="row">
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+            </div>
+            <div class="row">
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+            </div>
+            <div class="row">
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+            </div>
+            <div class="row">
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+            </div>
+            <div class="row">
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+            </div>
+            <div class="row">
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+              <div class="cell empty"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="second-content">
+          <div class="status-elements">
+            <div class="player-2-details">
+              <p>Player 2: Test name</p>
+              <div class="p2-time">2:00</div>
+              <div class="p2-hp"></div>
+            </div>
+            <div class="player-2-icon"></div>
+
+            <div class="betel-elements">
+              <img src="./inside.png" class="betal-standy">
+              <div class="betal-flex">
+                <!-- script -->
+              </div>
+            </div>
+          </div>  
+        </div>
+
+      </div>
+
+      <h1>Connect Four</h1>
+      <div class="message"></div>
+      <div class="player-turn"></div>
+      <div class="reset-button"><button>Reset Board</button></div>
   </body>
   <script src="connect-four-game.js"></script>
 </html>
