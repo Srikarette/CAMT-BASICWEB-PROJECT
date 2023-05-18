@@ -1,0 +1,28 @@
+body{
+    font-family: 'Press Start 2P', cursive;
+    margin: 0px;
+}
+.header{
+    width: 100%;
+    height: 100px;
+    background-color: blueviolet;
+}
+.header-navber{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+.mute-button{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+.mute-button button{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: greenyellow;
+    background-image: url("Assert/mute-icon.jpg");
+}
