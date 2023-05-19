@@ -14,6 +14,10 @@ var p2timer = 120000;
 
 var myInterval;
 
+window.onload = function () {
+  playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
+};
+
 // Helper function to check for four in a row
 const checkFour = (a, b, c, d) => {
   return (
@@ -118,20 +122,29 @@ const resetBoard = () => {
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
     clearInterval(myInterval);
+
+    //START COUNT TIME//
     if (currentPlayer == "red") {
       myInterval = setInterval(() => {
         p1timer = p1timer - 1000;
         displayTimer(p1timer, currentPlayer);
+        if (p1timer <= 0) {
+          win();
+        }
       }, 900);
     } else {
       myInterval = setInterval(() => {
         p2timer = p2timer - 1000;
         displayTimer(p2timer, currentPlayer);
+        if (p2timer <= 0) {
+          win();
+        }
       }, 900);
     }
+
     const columnIndex = Array.from(cell.parentNode.children).indexOf(cell);
     let rowIndex = 0;
-    if(message.innerText == ""){
+    if (message.innerText == "") {
       for (let i = rows.length - 1; i >= 0; i--) {
         if (rows[i].children[columnIndex].classList.contains("empty")) {
           rows[i].children[columnIndex].classList.remove("empty");
@@ -142,25 +155,19 @@ cells.forEach((cell) => {
       }
     }
 
+    //CHECK-WIN AND SWAP PLAYER
     if (checkWin()) {
-      message.textContent = `${currentPlayer.toUpperCase()} wins!`;
-      Swal.fire({
-        title: `${currentPlayer.toUpperCase()} wins!`,
-        icon: 'success',
-        confirmButtonText: 'OK'
-      }).then(() => {
-        resetBoard();
-      });
-      
-      resetButton.disabled = false;
+      win();
     } else {
-        if(rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)){
-          if (currentPlayer === "red") {
-            currentPlayer = "yellow";
-          } else {
-            currentPlayer = "red";
-          }
+      if (
+        rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)
+      ) {
+        if (currentPlayer === "red") {
+          currentPlayer = "yellow";
+        } else {
+          currentPlayer = "red";
         }
+      }
     }
     playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
   });
@@ -172,10 +179,6 @@ resetButton.addEventListener("click", (e) => {
   e.target.disabled = true;
 });
 
-window.onload = function () {
-  playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
-};
-
 //function setTime(playerTime) {
 //  const now = new Date().getTime(); //12.45
 //  const later = new Date(now + playerTime[0] * 60000 + playerTime[1] * 1000); //12.50
@@ -185,13 +188,36 @@ window.onload = function () {
 function displayTimer(timer, current) {
   if (current == "red") {
     p1Time.innerText =
-      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0') +
+      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60))
+        .toString()
+        .padStart(2, "0") +
       " : " +
-      Math.floor((timer % (1000 * 60)) / 1000).toString().padStart(2, '0');
+      Math.floor((timer % (1000 * 60)) / 1000)
+        .toString()
+        .padStart(2, "0");
   } else {
     p2Time.innerText =
-      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0') +
+      Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60))
+        .toString()
+        .padStart(2, "0") +
       " : " +
-      Math.floor((timer % (1000 * 60)) / 1000).toString().padStart(2, '0');
+      Math.floor((timer % (1000 * 60)) / 1000)
+        .toString()
+        .padStart(2, "0");
   }
+}
+function win() {
+  if(p1timer <= 0){
+    currentPlayer = "red";
+  }
+  clearInterval(myInterval);
+    message.textContent = `${currentPlayer.toUpperCase()} wins!`;
+  Swal.fire({
+    title: `${currentPlayer.toUpperCase()} wins!`,
+    icon: "success",
+    confirmButtonText: "OK",
+  }).then(() => {
+    resetBoard();
+  });
+  resetButton.disabled = false;
 }
