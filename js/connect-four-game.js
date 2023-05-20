@@ -156,7 +156,7 @@ cells.forEach((cell) => {
     }
 
     //CHECK-WIN AND SWAP PLAYER
-    if (checkWin()) {
+    if (checkWin()) { 
       win();
     } else {
       if (
@@ -185,6 +185,9 @@ resetButton.addEventListener("click", (e) => {
 //  return later - now; //12.50 - 12.45 = 5 === 50000000
 //}
 
+/**
+ * The function displays the time in minutes and seconds for a given timer and current player color.
+ */
 function displayTimer(timer, current) {
   if (current == "red") {
     p1Time.innerText =
@@ -206,18 +209,24 @@ function displayTimer(timer, current) {
         .padStart(2, "0");
   }
 }
+/**
+ * The function checks if a player's timer has run out and declares them the winner, displays a message
+ * and resets the board.
+ */
 function win() {
   if(p1timer <= 0){
     currentPlayer = "red";
   }
   clearInterval(myInterval);
     message.textContent = `${currentPlayer.toUpperCase()} wins!`;
-  Swal.fire({
-    title: `${currentPlayer.toUpperCase()} wins!`,
-    icon: "success",
-    confirmButtonText: "OK",
-  }).then(() => {
-    resetBoard();
-  });
+    setTimeout(function(){
+      Swal.fire({
+        title: `${currentPlayer.toUpperCase()} wins!`,
+        icon: "success",
+        confirmButtonText: "OK",
+      }).then(() => {
+        resetBoard();
+      });
+    }, 2000); 
   resetButton.disabled = false;
 }
