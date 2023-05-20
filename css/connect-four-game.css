@@ -6,6 +6,7 @@
 
 .board {
   max-width: 520px;
+  min-width: 520px;
   max-height: fit-content;
   position: relative;
   display: flex;
@@ -79,18 +80,27 @@ h1 {
   background-color: black;
 }
 
+/* frame container */
+.frame-container {
+  width: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
 
 /* flex elements */
 .flex-container {
-  height: 90vh;
+  height: fit-content;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
 }
 
-.first-content, .second-content { width: 25%; height: 100%; }
+.first-content, .second-content { min-width: 25%; height: 100%; }
 .board-content { 
-  width: 50%; 
+  max-width: 50%; 
   display: flex;
   flex-direction: column;
   position: relative;
@@ -111,7 +121,7 @@ h1 {
   
 }
 .head-content p { 
-  font-size: 2vh; 
+  font-size: 15px; 
   color: rgba(255,255,255,0.9);
 }
 
@@ -135,7 +145,7 @@ h1 {
 /* first elements */
 .status-elements {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   height: fit-content;
 }
@@ -157,7 +167,9 @@ h1 {
   flex-wrap: nowrap;
   justify-content: center;
   flex-direction: column;
+  color: white;
 }
+
 .p1-time, .p2-time {
   width: 150px;
 
@@ -179,6 +191,7 @@ h1 {
 /* betal elements */
 .betal-elements {
   position: relative;
+  height: fit-content;
 }
 
 .betal-standy {
@@ -186,6 +199,11 @@ h1 {
   z-index: 1;
   width: 250px;
   height: 520px;
+  align-items: center;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .betal-flex {
@@ -193,16 +211,92 @@ h1 {
   z-index: 10;
   width: 250px;
   height: 500px;
-  padding: 20px 0;
+  padding: 16px 0 65px 0;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
 }
 
 .betal-flex > div {
   width: 100px;
   height: 20px;
-  background-image: url('../images/red-betal.png');
   border: 2px solid rgba(0,0,0,0.3);
   border-radius: 5px;
 }
+
+.p-red {
+  background-image: url('./image/red-betal.png');
+}
+.p-yellow {
+  background-image: url('./image/yellow-betal.png');
+}
+
+/* HEAD SECTION
+   contains basic elements to do some of common functions, and these
+   will effect to whole site. it mean it doesn't cause to particular
+   player. 
+
+   list of elements inside:
+    - music               [button](toggle on/off)
+    - background changer  [button](selector alert popup)
+    - reset               [button](active action)
+    - informations        [button](alert popup)
+ */
+
+ .header {
+  position: fixed;
+  z-index: 11;
+
+  height: fit-content;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  background:rgb(24, 23, 45);
+  box-shadow: 0 5px 5px rgba(0,0,0,0.5);
+ }
+
+ .button-container { position: relative; }
+
+ .button-container > button {
+  width: 60px;
+  height: 50px;
+  margin: 5px;
+
+  background:rgb(31, 31, 51);
+  border: 5px solid rgb(21, 21, 37);
+  border-radius: 5px;
+ }
+
+ .button-container > button:hover {
+  background:rgb(65, 65, 107);
+  border: 5px solid rgb(189, 189, 189);
+  border-radius: 5px;
+ }
+
+ .header-element-popup {
+  position: absolute;
+
+  width: 250px;
+  padding: 10px;
+  top: 195%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: rgb(196, 196, 196);
+  background: rgb(31, 31, 51);
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.3);
+  border-radius: 5px;
+  
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+ }
+
+ .button-container > button:hover + .header-element-popup {
+  visibility: visible;
+  opacity: 1;
+ }

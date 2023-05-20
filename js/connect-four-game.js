@@ -166,6 +166,7 @@ cells.forEach((cell) => {
           currentPlayer = "yellow";
         } else {
           currentPlayer = "red";
+          
         }
       }
     }
