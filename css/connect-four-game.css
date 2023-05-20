@@ -226,10 +226,10 @@ h1 {
 }
 
 .p-red {
-  background-image: url('./image/red-betal.png');
+  background-image: url('../images/red-betal.png');
 }
 .p-yellow {
-  background-image: url('./image/yellow-betal.png');
+  background-image: url('../images/yellow-betal.png');
 }
 
 /* HEAD SECTION
