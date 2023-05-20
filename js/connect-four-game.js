@@ -7,6 +7,7 @@ const resetButton = document.querySelector(".reset-button");
 const p1Time = document.querySelector(".p1-time");
 const p2Time = document.querySelector(".p2-time");
 let currentPlayer = "red";
+var betal_played = 0;
 var p1timer = 120000;
 var p2timer = 120000;
 //p1timer = setTime(p1timer);
@@ -100,9 +101,11 @@ const checkWin = () => {
 
 // Helper function to reset the board
 const resetBoard = () => {
+  betal_played = 0;
   clearBetal();
   setBetalStand();
   clearInterval(myInterval);
+
   document.getElementsByClassName("message")[0].innerText = "";
   p1Time.innerText = " 02 : 00 ";
   p2Time.innerText = " 02 : 00 ";
@@ -167,10 +170,14 @@ cells.forEach((cell) => {
       ) {
         if (currentPlayer === "red") {
           currentPlayer = "yellow";
-          delBetal(".p-red");
+          betal_played += delBetal(".p-red");
         } else {
           currentPlayer = "red";
-          delBetal(".p-yellow");
+          betal_played += delBetal(".p-yellow");
+        }
+
+        if (betal_played == 42) {
+          win();
         }
       }
     }

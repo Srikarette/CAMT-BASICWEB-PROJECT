@@ -33,4 +33,6 @@ function delBetal(selected) {
             break;
         }
     }
+
+    return 1;
 }
