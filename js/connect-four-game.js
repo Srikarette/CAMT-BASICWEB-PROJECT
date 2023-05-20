@@ -3,7 +3,7 @@ const cells = document.querySelectorAll(".cell");
 const rows = document.querySelectorAll(".row");
 const message = document.querySelector(".message");
 const playerTurn = document.getElementsByClassName("player-turn")[0];
-const resetButton = document.querySelector(".reset-button button");
+const resetButton = document.querySelector(".reset-button");
 const p1Time = document.querySelector(".p1-time");
 const p2Time = document.querySelector(".p2-time");
 let currentPlayer = "red";
@@ -16,6 +16,7 @@ var myInterval;
 
 window.onload = function () {
   playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
+  setBetalStand();
 };
 
 // Helper function to check for four in a row
@@ -99,6 +100,8 @@ const checkWin = () => {
 
 // Helper function to reset the board
 const resetBoard = () => {
+  clearBetal();
+  setBetalStand();
   clearInterval(myInterval);
   document.getElementsByClassName("message")[0].innerText = "";
   p1Time.innerText = " 02 : 00 ";
@@ -164,9 +167,10 @@ cells.forEach((cell) => {
       ) {
         if (currentPlayer === "red") {
           currentPlayer = "yellow";
+          delBetal(".p-red");
         } else {
           currentPlayer = "red";
-          
+          delBetal(".p-yellow");
         }
       }
     }

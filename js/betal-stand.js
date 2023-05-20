@@ -2,7 +2,6 @@
 let count = 0;
 const board_size = 42/2;
 const get_betal_stand = document.querySelectorAll(".betal-flex");
-
 function setBetalStand() {
     get_betal_stand.forEach((betal) => {
         console.log(betal);
