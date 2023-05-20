@@ -94,6 +94,9 @@ const checkWin = () => {
 
 // Helper function to reset the board
 const resetBoard = () => {
+  clearBetal();
+  setBetalStand();
+
   clearInterval(myInterval);
   document.getElementsByClassName("message")[0].innerText = "";
   p1Time.innerText = "";
@@ -126,6 +129,7 @@ cells.forEach((cell) => {
       myInterval = setInterval(() => {
         p2 = p2 - 1000;
         displayTimer(p2, currentPlayer);
+        
       }, 900);
     }
     const columnIndex = Array.from(cell.parentNode.children).indexOf(cell);
@@ -147,8 +151,10 @@ cells.forEach((cell) => {
     } else {
         if(rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)){
           if (currentPlayer === "red") {
+            delBetal(".p-red");
             currentPlayer = "yellow";
           } else {
+            delBetal(".p-yellow");
             currentPlayer = "red";
           }
         }
@@ -165,6 +171,7 @@ resetButton.addEventListener("click", (e) => {
 
 window.onload = function () {
   playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
+  setBetalStand();
 };
 
 function setTime(playerTime) {
