@@ -8,8 +8,8 @@ const p1Time = document.querySelector(".p1-time");
 const p2Time = document.querySelector(".p2-time");
 let currentPlayer = "red";
 var betal_played = 0;
-var p1timer = 120000;
-var p2timer = 120000;
+var p1timer = 4000;
+var p2timer = 4000;
 //p1timer = setTime(p1timer);
 //p2timer = setTime(p2timer);
 
@@ -162,7 +162,7 @@ cells.forEach((cell) => {
     }
 
     //CHECK-WIN AND SWAP PLAYER
-    if (checkWin()) { 
+    if (checkWin()) {
       win();
     } else {
       if (
@@ -226,19 +226,47 @@ function displayTimer(timer, current) {
  * and resets the board.
  */
 function win() {
-  if(p1timer <= 0){
-    currentPlayer = "red";
+  var winplayer = currentPlayer;
+  if (p2timer <= 0) {
+    winplayer = "yellow";
+  } else if (p1timer <= 0) {
+    winplayer = "red";
   }
+  if (betal_played == 42) {
+    if (p2timer > p1timer) {
+      winplayer = "red";
+    } else if (p1timer > p2timer) {
+      winplayer = "yellow";
+    } else {
+      clearInterval(myInterval);
+      message.textContent = "Draw!";
+      setTimeout(function () {
+        Swal.fire({
+          title: "Draw!",
+          icon: "warning",
+          confirmButtonText: "OK",
+        }).then(() => {
+          resetBoard();
+        });
+      }, 1000);
+      resetButton.disabled = false;
+      return;
+    }
+  }
+  alertEvent(winplayer, "win!");
+}
+
+function alertEvent(winplayer, title) {
   clearInterval(myInterval);
-    message.textContent = `${currentPlayer.toUpperCase()} wins!`;
-    setTimeout(function(){
-      Swal.fire({
-        title: `${currentPlayer.toUpperCase()} wins!`,
-        icon: "success",
-        confirmButtonText: "OK",
-      }).then(() => {
-        resetBoard();
-      });
-    }, 2000); 
+  message.textContent = `${winplayer.toUpperCase()}` + " " + title;
+  setTimeout(function () {
+    Swal.fire({
+      title: `${winplayer.toUpperCase()}` + " " +title,
+      icon: "success",
+      confirmButtonText: "OK",
+    }).then(() => {
+      resetBoard();
+    });
+  }, 1000);
   resetButton.disabled = false;
 }
