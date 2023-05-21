@@ -221,9 +221,12 @@ function displayTimer(timer, current) {
         .padStart(2, "0");
   }
 }
+
 /**
- * The function checks if a player's timer has run out and declares them the winner, displays a message
- * and resets the board.
+ * The function determines the winner of a game of Connect Four based on the player with the most time
+ * left or the player who played the last move if all spaces are filled.
+ * @returns It seems that nothing is being returned in this code snippet. The `return` statement is
+ * only used to exit the function early in case the game ends in a draw.
  */
 function win() {
   var winplayer = currentPlayer;
