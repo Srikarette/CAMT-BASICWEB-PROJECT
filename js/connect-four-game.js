@@ -6,14 +6,17 @@ const playerTurn = document.getElementsByClassName("player-turn")[0];
 const resetButton = document.querySelector(".reset-button");
 const p1Time = document.querySelector(".p1-time");
 const p2Time = document.querySelector(".p2-time");
+const p1Sound = document.getElementById("p1Sound");
+const p2Sound = document.getElementById("p2Sound");
+const winSound = document.getElementById("winSound");
+const drawSound = document.getElementById("drawSound");
 var infoBtn = document.querySelector(".information-element");
 var bgBtn = document.querySelector(".background-element");
 let currentPlayer = "red";
 var betal_played = 0;
 var p1timer = 120000; //120000 = 2 Minute
 var p2timer = 120000;
-var wintype;
-var position = [];
+let clickInProgress = false;
 //STUPID JS USE P2TIMER->Red , P1TIMER-> Yellow
 //p1timer = setTime(p1timer);
 //p2timer = setTime(p2timer);
@@ -171,9 +174,15 @@ const resetBoard = () => {
 // Add event listener to each cell
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
+    if(clickInProgress){
+      return;
+    }
+    
+    clickInProgress = true;
     clearInterval(myInterval);
 
-    //START COUNT TIME//
+    setTimeout(()=>{
+      //START COUNT TIME//
     if (currentPlayer == "red") {
       myInterval = setInterval(() => {
         p1timer = p1timer - 1000;
@@ -213,9 +222,11 @@ cells.forEach((cell) => {
         rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)
       ) {
         if (currentPlayer === "red") {
+          p1Sound.play();
           currentPlayer = "yellow";
           betal_played += delBetal(".p-red");
         } else {
+          p2Sound.play();
           currentPlayer = "red";
           betal_played += delBetal(".p-yellow");
         }
@@ -226,6 +237,8 @@ cells.forEach((cell) => {
       }
     }
     playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
+    clickInProgress = false;
+    },100)
   });
 });
 
@@ -285,6 +298,7 @@ function win() {
     } else if (p1timer > p2timer) {
       winplayer = "yellow";
     } else {
+      drawSound.play();
       clearInterval(myInterval);
       message.textContent = "Draw!";
       setTimeout(function () {
@@ -300,6 +314,7 @@ function win() {
       return;
     }
   }
+  winSound.play();
   alertEvent(winplayer, "win!");
 }
 
