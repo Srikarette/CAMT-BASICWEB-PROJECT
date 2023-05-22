@@ -51,6 +51,8 @@
   border: 5px solid #2a44a0;
 }
 
+.mark { border: 5px solid white !important; }
+
 .red {
   background: linear-gradient(-90deg, rgb(152, 17, 17), #e31111) padding-box,
               linear-gradient(90deg, rgb(152, 17, 17), #e31111) border-box;
