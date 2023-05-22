@@ -12,6 +12,8 @@ let currentPlayer = "red";
 var betal_played = 0;
 var p1timer = 120000; //120000 = 2 Minute
 var p2timer = 120000;
+var wintype;
+var position = [];
 //STUPID JS USE P2TIMER->Red , P1TIMER-> Yellow
 //p1timer = setTime(p1timer);
 //p2timer = setTime(p2timer);
@@ -19,29 +21,31 @@ var p2timer = 120000;
 var myInterval;
 
 window.onload = function () {
+  console.log(cells);
   playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
   setBetalStand();
-  infoBtn.addEventListener("click",()=>{
+  infoBtn.addEventListener("click", () => {
     Swal.fire({
-      width : '900px',
+      width: "900px",
       customClass: {
-        htmlContainer: 'how-to-class'
+        htmlContainer: "how-to-class",
       },
       html:
-      '<h2>HOW TO PLAY</h2><br><br>' +
-      '<ul>'+
-      '<li>First, decide who goes first and what color each player will have.</li>'+
-      '<li>Players must alternate turns, and only one disc can be dropped in each turn.</li>'+
-      '<li>On your turn, drop one of your colored discs from the top into any of the seven slots.</li>'+
-      '<li>The game ends when there is a 4-in-a-row or a stalemate.</li>'+
-      '<li>The starter of the previous game goes second on the next game.</li>'+
-      '</ul>',
-      footer: '<a href="https://www.gamesver.com/the-rules-of-connect-4-according-to-m-bradley-hasbro/">More rule ?</a>'
+        "<h2>HOW TO PLAY</h2><br><br>" +
+        "<ul>" +
+        "<li>First, decide who goes first and what color each player will have.</li>" +
+        "<li>Players must alternate turns, and only one disc can be dropped in each turn.</li>" +
+        "<li>On your turn, drop one of your colored discs from the top into any of the seven slots.</li>" +
+        "<li>The game ends when there is a 4-in-a-row or a stalemate.</li>" +
+        "<li>The starter of the previous game goes second on the next game.</li>" +
+        "</ul>",
+      footer:
+        '<a href="https://www.gamesver.com/the-rules-of-connect-4-according-to-m-bradley-hasbro/">More rule ?</a>',
     });
-  })
-  bgBtn.addEventListener("click",()=>{
-    Swal.fire('Somethings');
-  })
+  });
+  bgBtn.addEventListener("click", () => {
+    Swal.fire("Somethings");
+  });
 };
 
 // Helper function to check for four in a row
@@ -67,6 +71,10 @@ const checkWin = () => {
           row.children[i + 3]
         )
       ) {
+        row.children[i].classList.add("mark");
+        row.children[i + 1].classList.add("mark");
+        row.children[i + 2].classList.add("mark");
+        row.children[i + 3].classList.add("mark");
         return true;
       }
     }
@@ -83,6 +91,10 @@ const checkWin = () => {
           rows[j + 3].children[i]
         )
       ) {
+        rows[j].children[i].classList.add("mark");
+        rows[j + 1].children[i].classList.add("mark");
+        rows[j + 2].children[i].classList.add("mark");
+        rows[j + 3].children[i].classList.add("mark");
         return true;
       }
     }
@@ -99,6 +111,10 @@ const checkWin = () => {
           rows[j + 3].children[i + 3]
         )
       ) {
+        rows[j].children[i].classList.add("mark");
+        rows[j + 1].children[i + 1].classList.add("mark");
+        rows[j + 2].children[i + 2].classList.add("mark");
+        rows[j + 3].children[i + 3].classList.add("mark");
         return true;
       }
     }
@@ -115,6 +131,10 @@ const checkWin = () => {
           rows[j - 3].children[i + 3]
         )
       ) {
+          rows[j].children[i].classList.add("mark");
+          rows[j - 1].children[i + 1].classList.add("mark");
+          rows[j - 2].children[i + 2].classList.add("mark");
+          rows[j - 3].children[i + 3].classList.add("mark");
         return true;
       }
     }
@@ -135,7 +155,7 @@ const resetBoard = () => {
   p2Time.innerText = " 02 : 00 ";
   message.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
   cells.forEach((cell) => {
-    cell.classList.remove("red", "yellow");
+    cell.classList.remove("red", "yellow","mark");
     cell.classList.add("empty");
   });
   currentPlayer = "red";
@@ -288,7 +308,7 @@ function alertEvent(winplayer, title) {
   message.textContent = `${winplayer.toUpperCase()}` + " " + title;
   setTimeout(function () {
     Swal.fire({
-      title: `${winplayer.toUpperCase()}` + " " +title,
+      title: `${winplayer.toUpperCase()}` + " " + title,
       icon: "success",
       confirmButtonText: "OK",
     }).then(() => {
