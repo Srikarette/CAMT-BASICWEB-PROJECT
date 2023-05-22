@@ -300,3 +300,14 @@ h1 {
   visibility: visible;
   opacity: 1;
  }
+ .how-to-class li{
+  text-align: left;
+  padding-bottom: 12px;
+ }
+ .how-to-class ul{
+  margin-left: 25px;
+ }
+.how-to-class{
+  list-style-type: circle;
+  overflow: inherit;
+}
