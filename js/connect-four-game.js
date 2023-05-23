@@ -173,6 +173,35 @@ const resetBoard = () => {
 
 // Add event listener to each cell
 cells.forEach((cell) => {
+  let currentPlayerHover = 0;
+  const columnIndex = Array.from(cell.parentNode.children).indexOf(cell);
+  cell.addEventListener("mouseover",()=>{
+    for (let i = rows.length - 1; i >= 0; i--){
+      if(rows[i].children[columnIndex].classList.contains("empty")){
+        if(currentPlayerHover == 0){
+          currentPlayerHover = i; 
+        }
+        rows[i].children[columnIndex].classList.add("hover");
+        console.log(i,columnIndex)
+      }
+    }if(currentPlayer == "red"){
+      rows[currentPlayerHover].children[columnIndex].classList.remove("hover");
+      rows[currentPlayerHover].children[columnIndex].classList.add("redHover");
+    }else{
+      rows[currentPlayerHover].children[columnIndex].classList.remove("hover");
+      rows[currentPlayerHover].children[columnIndex].classList.add("yellowHover");
+    }
+    currentPlayerHover = 0;
+  });
+  
+  cell.addEventListener("mouseleave",()=>{
+    for (let i = rows.length - 1; i >= 0; i--){
+      rows[i].children[columnIndex].classList.remove("hover");
+      rows[i].children[columnIndex].classList.remove("redHover");
+      rows[i].children[columnIndex].classList.remove("yellowHover");
+    }
+  });
+
   cell.addEventListener("click", () => {
     if(clickInProgress){
       return;

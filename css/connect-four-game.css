@@ -78,8 +78,25 @@ h1 {
   padding-top: 10px;
   margin: 0;
 }
-.row:hover{
-  background-color: black;
+.hover{
+  background: aliceblue;
+  opacity: 0.5;
+}
+.redHover{
+  background: linear-gradient(-90deg, rgb(152, 17, 17), #e31111) padding-box,
+              linear-gradient(90deg, rgb(152, 17, 17), #e31111) border-box;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  border: 8px solid transparent;
+  border-radius: 50px;
+  opacity: 0.5;
+}
+.yellowHover{
+  background: linear-gradient(-90deg, #ff8400, #e8c900) padding-box,
+              linear-gradient(90deg, #ff8400, #e8c900) border-box;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  border: 8px solid transparent;
+  border-radius: 50px;
+  opacity: 0.5;
 }
 
 /* frame container */
