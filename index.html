@@ -6,19 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/manu.css">
-    <link rel="stylesheet" href="./css/index-header.css">
-
+    <link rel="stylesheet" href="./css/universal-header.css">
+    
+    <script src="https://kit.fontawesome.com/5dc127e2c6.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 </head>
 <body>
     
     <div class="main-content">
-        <div class="menu-header">
-            <button onclick="toggleMute()"></button>
-        </div>
+        <div class="header">
+
+            <div class="button-container">
+              <button class="reset-element reset-button">
+                <i class="fa-solid fa-circle-notch" style="color: #c8c8c8;"></i>
+              </button>
+              
+              <div class="header-element-popup">
+                <h2>RESET</h2>
+                <p>to reset your game by clear all betal in the board.</p>
+              </div>
+            </div>
+      
+            <div class="button-container">
+              <button class="information-element">
+                <i class="fa-sharp fa-regular fa-circle-question" style="color: #c8c8c8;"></i>
+              </button>
+      
+              <div class="header-element-popup">
+                <h2>INFO</h2>
+                <p>you can see all of information and rules here!</p>
+              </div>
+            </div>
+      
+            <div class="button-container">
+              <button class="background-element">
+                <i class="fa-regular fa-image" style="color: #c8c8c8;"></i>
+              </button>
+      
+              <div class="header-element-popup">
+                <h2>THEME</h2>
+                <p>change the environment to change your mood & feeling.</p>
+              </div>
+            </div>  
+      
+            <div class="button-container">
+              <button class="music-element" onclick="toggleMute()">
+                <i class="fa-solid fa-music" style="color: #c8c8c8;"></i>
+              </button>
+      
+              <div class="header-element-popup">
+                <h2>Music</h2>
+                <p>toggle on and off the music whenever you want.</p>
+              </div>
+            </div>
+          </div>  
        
         <ul class="circles">
             <li></li>
@@ -42,7 +86,7 @@
 </body>
 
 <script>
-    var audio = new Audio('sounds/bgsound.mp3');
+    var audio = new Audio('sounds/Astral.mp3');
     var playAudio = function() {
         audio.play();
         audio.loop = true;
