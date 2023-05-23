@@ -22,12 +22,12 @@
 
             <div class="button-container">
               <button class="reset-element reset-button" onclick="toggleNightMode()">
-                <i class="fa-solid fa-circle-notch" style="color: #c8c8c8;"></i>
+                <i class="fa-solid fa-moon"  style="color: #c8c8c8;"></i>
               </button>
               
               <div class="header-element-popup">
-                <h2>Night Mode</h2>
-                <p>to reset your game by clear all betal in the board.</p>
+                <h2>Bright Mode</h2>
+                <p>to switch between light and dark theme.</p>
               </div>
             </div>
       
@@ -90,6 +90,8 @@
 
 <script>
     var isNightMode = true;
+    var isMute = false;
+
     var audio = new Audio('sounds/Astral.mp3');
     var playAudio = function() {
         audio.play();
