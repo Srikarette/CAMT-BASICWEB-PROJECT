@@ -5,34 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/manu.css">
-    <link rel="stylesheet" href="./css/heder.css">
+    <link rel="stylesheet" href="Css-file/manu.css">
+    <link rel="stylesheet" href="Css-file/index-header.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
-        <div class="header-navbar">
-            <div class="mute-button">
-                <button></button>
-            </div>
-        </div>
-    </div>
-
-    <div class="main-content">
-        <div class="logo">
-            <img src="Assert/Logo.png" alt="connect-four-game-logo">
-
-        </div>
-        <div class="starts-button">
-            <button>starts</button>
-        </div>
-    </div>
     
-    <div class="footer">
-   
+    <div class="main-content">
+        <div class="menu-header">
+            <button onclick="toggleMute()"></button>
+        </div>
+       
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <h1 class="title-rgb">CONNECT 4 GAME</h1>
+        <h1 class="title-base">CONNECT 4 GAME</h1>
+        <a class="start-game-button" href="connect-four-game.html">START</a>
     </div>
 
+   
+   
 </body>
+
+<script>
+    var audio = new Audio('Astral.mp3');
+    var playAudio = function() {
+        audio.play();
+        audio.loop = true;
+        document.removeEventListener('click', playAudio);
+    };
+    document.addEventListener('click', playAudio);
+
+    function toggleMute() {
+        audio.muted = !audio.muted;
+    }
+</script>
 </html>
