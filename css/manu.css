@@ -150,14 +150,6 @@
     animation: text-animate 8s linear;
     animation-iteration-count: infinite;
 }
-@keyframes text-animate{
-    0%{
-        background-position: 0%;
-    }
-    100%{
-        background-position: 400%;
-    }
-}
 .start-game-button{
     position: absolute;
     top: 55%;
@@ -179,6 +171,40 @@
     font-size: 45px;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+}
+@keyframes text-animate{
+    0%{
+        background-position: 0%;
+    }
+    100%{
+        background-position: 400%;
+    }
+}
+
+.subtitle{
+    position: absolute;
+    top: 41%;
+    transform: translateY(-41%);
+    transform: rotate(-25deg);
+    right: 20%;
+    background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+    background-size: 400%;
+    font-size: 15px;
+    letter-spacing: 5px;
+    font-weight: 700;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: subtitle-animate 1s linear;
+    animation-iteration-count: infinite;
+}
+@keyframes subtitle-animate{
+    0%{
+        font-size: 15px;
+    }
+    50%{
+        font-size: 20px;
+    }
+   
 }
 
 
