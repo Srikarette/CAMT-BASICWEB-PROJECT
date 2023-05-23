@@ -16,7 +16,7 @@
     <div class="header">
         <div class="header-navbar">
             <div class="mute-button">
-                <button></button>
+                <button onclick="toggleMute()"></button>
             </div>
         </div>
     </div>
@@ -24,16 +24,26 @@
     <div class="main-content">
         <div class="logo">
             <img src="Assert/Logo.png" alt="connect-four-game-logo">
-
         </div>
         <div class="starts-button">
             <button>starts</button>
         </div>
     </div>
     
-    <div class="footer">
-   
-    </div>
-
+    <div class="footer"></div>
 </body>
+
+<script>
+    var audio = new Audio('Astral.mp3');
+    var playAudio = function() {
+        audio.play();
+        audio.loop = true;
+        document.removeEventListener('click', playAudio);
+    };
+    document.addEventListener('click', playAudio);
+
+    function toggleMute() {
+        audio.muted = !audio.muted;
+    }
+</script>
 </html>
