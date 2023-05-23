@@ -10,7 +10,6 @@ const p1Sound = document.getElementById("p1Sound");
 const p2Sound = document.getElementById("p2Sound");
 const winSound = document.getElementById("winSound");
 const drawSound = document.getElementById("drawSound");
-const bgSound = document.getElementById("bgSound");
 var infoBtn = document.querySelector(".information-element");
 var bgBtn = document.querySelector(".background-element");
 var musicBtn = document.querySelector(".music-element");
@@ -374,14 +373,14 @@ function alertEvent(winplayer, title) {
   resetButton.disabled = false;
 }
 
-musicBtn.addEventListener("click", () => {
-  if (bgSound.autoplay == false) {
-    bgSound.autoplay = true;
-    bgSound.load();
-    console.log("Music on")
-  }else{
-    bgSound.autoplay = false;
-    bgSound.load();
-    console.log("Music off")
-  }
-});
+var audio = new Audio('sounds/bgsound.mp3');
+var playAudio = function() {
+    audio.play();
+    audio.loop = true;
+    document.removeEventListener('click', playAudio);
+};
+document.addEventListener('click', playAudio);
+
+function toggleMute() {
+    audio.muted = !audio.muted;
+}
