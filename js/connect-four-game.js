@@ -242,6 +242,12 @@ cells.forEach((cell) => {
         }
       }
     }
+    //DELETE HOVER AFTER CLICK
+    for (let i = rows.length - 1; i >= 0; i--){
+      rows[i].children[columnIndex].classList.remove("hover");
+      rows[i].children[columnIndex].classList.remove("redHover");
+      rows[i].children[columnIndex].classList.remove("yellowHover");
+    }
 
     //CHECK-WIN AND SWAP PLAYER
     if (checkWin()) {
