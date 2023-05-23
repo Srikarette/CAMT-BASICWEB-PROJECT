@@ -21,12 +21,12 @@
         <div class="header">
 
             <div class="button-container">
-              <button class="reset-element reset-button">
+              <button class="reset-element reset-button" onclick="toggleNightMode()">
                 <i class="fa-solid fa-circle-notch" style="color: #c8c8c8;"></i>
               </button>
               
               <div class="header-element-popup">
-                <h2>RESET</h2>
+                <h2>Night Mode</h2>
                 <p>to reset your game by clear all betal in the board.</p>
               </div>
             </div>
@@ -80,7 +80,7 @@
         
         <h1 class="title-rgb">CONNECT 4 GAME</h1>
         <h1 class="title-base">CONNECT 4 GAME</h1>
-        <h5 class="subtitle">VERY FUN!</h5>
+        <!-- <h5 class="subtitle">VERY FUN!</h5> -->
         <a class="start-game-button" href="connect-four-game.html">START</a>
     </div>
 
@@ -89,6 +89,7 @@
 </body>
 
 <script>
+    var isNightMode = true;
     var audio = new Audio('sounds/Astral.mp3');
     var playAudio = function() {
         audio.play();
@@ -100,5 +101,34 @@
     function toggleMute() {
         audio.muted = !audio.muted;
     }
+
+    function toggleNightMode() {
+
+      var backGroundElm = document.querySelector('.circles');
+      var textElm = document.querySelector('.title-base');
+      var bgElm = document.querySelector('.circles').getElementsByTagName('li');
+  
+      // Toggle night mode
+      isNightMode = !isNightMode;
+      
+      // Apply night mode
+      if (isNightMode === true) {
+        backGroundElm.style.backgroundColor = 'white';
+        textElm.style.color = '#232241';
+        for (let i = 0; i < bgElm.length; i++) {
+          bgElm[i].style.background = '#FFB800';
+        }
+      } else {
+        backGroundElm.style.backgroundColor = '#232241';
+        textElm.style.color = 'white';
+        for (let i = 0; i < bgElm.length; i++) {
+          bgElm[i].style.background = 'white';
+        }
+      }
+      
+      console.log(isNightMode);
+}
+
+
 </script>
 </html>
