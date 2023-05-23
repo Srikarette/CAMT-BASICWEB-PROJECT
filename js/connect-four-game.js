@@ -10,8 +10,10 @@ const p1Sound = document.getElementById("p1Sound");
 const p2Sound = document.getElementById("p2Sound");
 const winSound = document.getElementById("winSound");
 const drawSound = document.getElementById("drawSound");
+const bgSound = document.getElementById("bgSound");
 var infoBtn = document.querySelector(".information-element");
 var bgBtn = document.querySelector(".background-element");
+var musicBtn = document.querySelector(".music-element");
 let currentPlayer = "red";
 var betal_played = 0;
 var p1timer = 120000; //120000 = 2 Minute
@@ -24,6 +26,7 @@ let clickInProgress = false;
 var myInterval;
 
 window.onload = function () {
+  musicBtn.autoplay = true;
   console.log(cells);
   playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
   setBetalStand();
@@ -134,10 +137,10 @@ const checkWin = () => {
           rows[j - 3].children[i + 3]
         )
       ) {
-          rows[j].children[i].classList.add("mark");
-          rows[j - 1].children[i + 1].classList.add("mark");
-          rows[j - 2].children[i + 2].classList.add("mark");
-          rows[j - 3].children[i + 3].classList.add("mark");
+        rows[j].children[i].classList.add("mark");
+        rows[j - 1].children[i + 1].classList.add("mark");
+        rows[j - 2].children[i + 2].classList.add("mark");
+        rows[j - 3].children[i + 3].classList.add("mark");
         return true;
       }
     }
@@ -158,7 +161,7 @@ const resetBoard = () => {
   p2Time.innerText = " 02 : 00 ";
   message.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
   cells.forEach((cell) => {
-    cell.classList.remove("red", "yellow","mark");
+    cell.classList.remove("red", "yellow", "mark");
     cell.classList.add("empty");
   });
   currentPlayer = "red";
@@ -175,27 +178,30 @@ const resetBoard = () => {
 cells.forEach((cell) => {
   let currentPlayerHover = 0;
   const columnIndex = Array.from(cell.parentNode.children).indexOf(cell);
-  cell.addEventListener("mouseover",()=>{
-    for (let i = rows.length - 1; i >= 0; i--){
-      if(rows[i].children[columnIndex].classList.contains("empty")){
-        if(currentPlayerHover == 0){
-          currentPlayerHover = i; 
+  cell.addEventListener("mouseover", () => {
+    for (let i = rows.length - 1; i >= 0; i--) {
+      if (rows[i].children[columnIndex].classList.contains("empty")) {
+        if (currentPlayerHover == 0) {
+          currentPlayerHover = i;
         }
         rows[i].children[columnIndex].classList.add("hover");
-        console.log(i,columnIndex)
+        console.log(i, columnIndex);
       }
-    }if(currentPlayer == "red"){
+    }
+    if (currentPlayer == "red") {
       rows[currentPlayerHover].children[columnIndex].classList.remove("hover");
       rows[currentPlayerHover].children[columnIndex].classList.add("redHover");
-    }else{
+    } else {
       rows[currentPlayerHover].children[columnIndex].classList.remove("hover");
-      rows[currentPlayerHover].children[columnIndex].classList.add("yellowHover");
+      rows[currentPlayerHover].children[columnIndex].classList.add(
+        "yellowHover"
+      );
     }
     currentPlayerHover = 0;
   });
-  
-  cell.addEventListener("mouseleave",()=>{
-    for (let i = rows.length - 1; i >= 0; i--){
+
+  cell.addEventListener("mouseleave", () => {
+    for (let i = rows.length - 1; i >= 0; i--) {
       rows[i].children[columnIndex].classList.remove("hover");
       rows[i].children[columnIndex].classList.remove("redHover");
       rows[i].children[columnIndex].classList.remove("yellowHover");
@@ -203,77 +209,77 @@ cells.forEach((cell) => {
   });
 
   cell.addEventListener("click", () => {
-    if(clickInProgress){
+    if (clickInProgress) {
       return;
     }
-    
+
     clickInProgress = true;
     clearInterval(myInterval);
 
-    setTimeout(()=>{
+    setTimeout(() => {
       //START COUNT TIME//
-    if (currentPlayer == "red") {
-      myInterval = setInterval(() => {
-        p1timer = p1timer - 1000;
-        displayTimer(p1timer, currentPlayer);
-        if (p1timer <= 0) {
-          win();
-        }
-      }, 900);
-    } else {
-      myInterval = setInterval(() => {
-        p2timer = p2timer - 1000;
-        displayTimer(p2timer, currentPlayer);
-        if (p2timer <= 0) {
-          win();
-        }
-      }, 900);
-    }
+      if (currentPlayer == "red") {
+        myInterval = setInterval(() => {
+          p1timer = p1timer - 1000;
+          displayTimer(p1timer, currentPlayer);
+          if (p1timer <= 0) {
+            win();
+          }
+        }, 900);
+      } else {
+        myInterval = setInterval(() => {
+          p2timer = p2timer - 1000;
+          displayTimer(p2timer, currentPlayer);
+          if (p2timer <= 0) {
+            win();
+          }
+        }, 900);
+      }
 
-    const columnIndex = Array.from(cell.parentNode.children).indexOf(cell);
-    let rowIndex = 0;
-    if (message.innerText == "") {
+      const columnIndex = Array.from(cell.parentNode.children).indexOf(cell);
+      let rowIndex = 0;
+      if (message.innerText == "") {
+        for (let i = rows.length - 1; i >= 0; i--) {
+          if (rows[i].children[columnIndex].classList.contains("empty")) {
+            rows[i].children[columnIndex].classList.remove("empty");
+            rows[i].children[columnIndex].classList.add(currentPlayer);
+            rowIndex = i;
+            break;
+          }
+        }
+      }
+      //DELETE HOVER AFTER CLICK
       for (let i = rows.length - 1; i >= 0; i--) {
-        if (rows[i].children[columnIndex].classList.contains("empty")) {
-          rows[i].children[columnIndex].classList.remove("empty");
-          rows[i].children[columnIndex].classList.add(currentPlayer);
-          rowIndex = i;
-          break;
+        rows[i].children[columnIndex].classList.remove("hover");
+        rows[i].children[columnIndex].classList.remove("redHover");
+        rows[i].children[columnIndex].classList.remove("yellowHover");
+      }
+
+      //CHECK-WIN AND SWAP PLAYER
+      if (checkWin()) {
+        win();
+      } else {
+        if (
+          rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)
+        ) {
+          if (currentPlayer === "red") {
+            p1Sound.play();
+            currentPlayer = "yellow";
+            betal_played += delBetal(".p-red");
+          } else {
+            p2Sound.play();
+            currentPlayer = "red";
+            betal_played += delBetal(".p-yellow");
+          }
+
+          if (betal_played == 42) {
+            win();
+          }
         }
       }
-    }
-    //DELETE HOVER AFTER CLICK
-    for (let i = rows.length - 1; i >= 0; i--){
-      rows[i].children[columnIndex].classList.remove("hover");
-      rows[i].children[columnIndex].classList.remove("redHover");
-      rows[i].children[columnIndex].classList.remove("yellowHover");
-    }
-
-    //CHECK-WIN AND SWAP PLAYER
-    if (checkWin()) {
-      win();
-    } else {
-      if (
-        rows[rowIndex].children[columnIndex].classList.contains(currentPlayer)
-      ) {
-        if (currentPlayer === "red") {
-          p1Sound.play();
-          currentPlayer = "yellow";
-          betal_played += delBetal(".p-red");
-        } else {
-          p2Sound.play();
-          currentPlayer = "red";
-          betal_played += delBetal(".p-yellow");
-        }
-
-        if (betal_played == 42) {
-          win();
-        }
-      }
-    }
-    playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
-    clickInProgress = false;
-    },100)
+      playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
+      clickInProgress = false;
+    }, 100);
   });
 });
 
@@ -367,3 +373,15 @@ function alertEvent(winplayer, title) {
   }, 1500);
   resetButton.disabled = false;
 }
+
+musicBtn.addEventListener("click", () => {
+  if (bgSound.autoplay == false) {
+    bgSound.autoplay = true;
+    bgSound.load();
+    console.log("Music on")
+  }else{
+    bgSound.autoplay = false;
+    bgSound.load();
+    console.log("Music off")
+  }
+});
