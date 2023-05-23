@@ -1,4 +1,16 @@
-.header {
+/* HEAD SECTION
+   contains basic elements to do some of common functions, and these
+   will effect to whole site. it mean it doesn't cause to particular
+   player. 
+
+   list of elements inside:
+    - music               [button](toggle on/off)
+    - background changer  [button](selector alert popup)
+    - reset               [button](active action)
+    - informations        [button](alert popup)
+ */
+
+ .header {
     position: fixed;
     z-index: 11;
   
