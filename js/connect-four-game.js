@@ -16,8 +16,8 @@ var bgBtn = document.querySelector(".background-element");
 var musicBtn = document.querySelector(".music-element");
 let currentPlayer = "red";
 var betal_played = 0;
-var p1timer = 120000; //120000 = 2 Minute
-var p2timer = 120000;
+var p1timer = 78000; //120000 = 2 Minute 78000= 1.30 Minute
+var p2timer = 78000;
 let clickInProgress = false;
 //STUPID JS USE P2TIMER->Red , P1TIMER-> Yellow
 //p1timer = setTime(p1timer);
