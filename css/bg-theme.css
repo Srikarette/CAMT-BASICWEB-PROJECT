@@ -1,0 +1,11 @@
+.background-theme-class{
+    display: flex;
+    align-content: space-between;
+}
+
+.background-theme-class button{
+    width: 75px;
+    height: 75px;
+    margin: 0px 20px 0px 0px;
+    border-radius: 15px;
+}

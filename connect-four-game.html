@@ -4,6 +4,8 @@
     <title>Connect 4 Game</title>
     <link rel="stylesheet" href="./css/connect-four-game.css">
     <link rel="stylesheet" href="./css/universal-header.css">
+    <link rel="stylesheet" href="./css/bg-theme.css">
+    <link rel="stylesheet" href="./css/manu.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Kanit:wght@100;400&family=Righteous&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5dc127e2c6.js" crossorigin="anonymous"></script>
@@ -15,9 +17,10 @@
     <audio src="./sounds/p2.mp3" id="p2Sound"></audio>
     <audio src="./sounds/win.wav" id="winSound"></audio>
     <audio src="./sounds/bgsound.mp3" id="bgSound"></audio>
+
+    
     <!-- main section position -->
     <div class="header">
-
       <div class="button-container">
         <button class="reset-element reset-button">
           <i class="fa-solid fa-circle-notch" style="color: #c8c8c8;"></i>
@@ -61,7 +64,19 @@
           <p>toggle on and off the music whenever you want.</p>
         </div>
       </div>
-    </div>             
+    </div>
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>             
 
     <div class="frame-container">
       <div class="flex-container">
@@ -153,9 +168,9 @@
             </div>
           </div>
         </div>
+        
 
         <div class="second-content">
-
           <div class="status-elements">
             <div class="player-2-details">
               <p>Player 2: Test name</p>
@@ -176,10 +191,12 @@
       </div>
     </div>
     
-      <h1>Connect Four</h1>
-      <div class="message"></div>
-      <div class="player-turn"></div>
+    
+      <div style="display: none;" class="message"></div>
+      <div style="display: none;" class="player-turn"></div>
+
   </body>
   <script src="./js/betal-stand.js"></script>
   <script src="./js/connect-four-game.js"></script>
+  <script src="/js/background-theme.js"></script>
 </html>

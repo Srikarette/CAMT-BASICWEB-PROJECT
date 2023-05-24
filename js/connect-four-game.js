@@ -49,7 +49,20 @@ window.onload = function () {
     });
   });
   bgBtn.addEventListener("click", () => {
-    Swal.fire("Somethings");
+    Swal.fire({
+      width: "900px",
+      customClass: {
+        htmlContainer: "background-theme-class",
+      },
+      html:
+      "<h2>SELECT THEME</h2><br><br>" +
+      '<button style="background:#ffffff;" onclick="toggleNightModeEx()"></button>' +
+      '<button style="background:#f79327;" onclick="toggleTheme01()"></button>' +
+      '<button style="background:#f2bed1;" onclick="toggleTheme02()"></button>' +
+      '<button style="background:#2c807d;" onclick="toggleTheme03()"></button>' +
+      '<button style="background:#97deff;" onclick="toggleTheme04()"></button>',
+    });
+    
   });
 };
 
