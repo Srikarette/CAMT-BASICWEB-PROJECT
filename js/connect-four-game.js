@@ -467,11 +467,5 @@ var playAudio = function() {
 document.addEventListener('click', playAudio);
 
 function toggleMute() {
-<<<<<<< Updated upstream
     audio.muted = !audio.muted;
 }
-=======
-  audio.muted = !audio.muted;
-}
-
->>>>>>> Stashed changes
