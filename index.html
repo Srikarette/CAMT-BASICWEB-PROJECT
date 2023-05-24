@@ -63,32 +63,34 @@
                 <p>toggle on and off the music whenever you want.</p>
               </div>
             </div>
-          </div>  
-       
+          </div>
+
         <ul class="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li onclick="toggleEsterEgg()"></li>
+            <li onclick="toggleEsterEgg()"></li>
+            <li onclick="toggleEsterEgg()"></li>
+            <li onclick="toggleEsterEgg()"></li>
+            <li onclick="toggleEsterEgg()"></li>
+            <li onclick="toggleEsterEgg()"></li>
+            <li onclick="toggleEsterEgg()"></li>
+            <li onclick="toggleEsterEgg()"></li>
+            <li onclick="toggleEsterEgg()"></li>
+            <li onclick="toggleEsterEgg()"></li>
         </ul>
         
         <h1 class="title-rgb">CONNECT 4 GAME</h1>
         <h1 class="title-base">CONNECT 4 GAME</h1>
-        <!-- <h5 class="subtitle">VERY FUN!</h5> -->
+        <h5 class="subtitle">VERY FUN!</h5>
         <a class="start-game-button" href="connect-four-game.html">-START-</a>
+        <a class="continue-game-button" href="connect-four-game.html">-CONTINUE-</a>
         <a class="history-game-button" href="connect-four-game.html">-HISTORY-</a>
     </div>
+
 </body>
 
 <script src="/js/background-theme.js"></script>
 <script>
-    var isMute = false;
+    var counter = 0;
 
     var audio = new Audio('sounds/Astral.mp3');
     var playAudio = function() {
@@ -101,5 +103,17 @@
     function toggleMute() {
         audio.muted = !audio.muted;
     }
+    function toggleEsterEgg() {
+    counter++;
+    var bgElm = document.querySelector('.circles');
+    if (counter == 11) {
+      // Replace the following line with code to embed a video player and play the video
+      audio.muted = true;
+      bgElm.innerHTML = '<video src="/images/specailbg.mp4" muted autoplay loop ></video>';
+    }
+
+    console.log(counter);
+    }
+
 </script>
 </html>

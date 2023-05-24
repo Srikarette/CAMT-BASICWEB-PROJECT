@@ -140,9 +140,9 @@
 
 .title-rgb{
     position: absolute;
-    top: 40%;
+    top: 39%;
     transform: translateY(-40%);
-    right: 428px;
+    /* right: 428px; */
     background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
     background-size: 400%;
     font-size: 70px;
@@ -175,6 +175,28 @@
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
+.continue-game-button{
+    position: absolute;
+    top: 60%;
+    transform: translateY(-60%);
+    transition: 0.2s;
+    background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+    background-size: 400%;
+    font-size: 30px;
+    letter-spacing: 5px;
+    font-weight: 700;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: text-animate 8s linear;
+    animation-iteration-count: infinite;
+}
+.continue-game-button:hover{
+    background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+    background-size: 400%;
+    font-size: 45px;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
 .history-game-button{
     position: absolute;
     top: 65%;
@@ -197,6 +219,7 @@
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
+
 @keyframes text-animate{
     0%{
         background-position: 0%;
@@ -221,6 +244,7 @@
     -webkit-background-clip: text;
     animation: subtitle-animate 1s linear;
     animation-iteration-count: infinite;
+    display: none;
 }
 @keyframes subtitle-animate{
     0%{
