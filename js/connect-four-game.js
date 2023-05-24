@@ -345,6 +345,7 @@ function displayTimer(timer, current) {
  * @returns It seems that nothing is being returned in this code snippet. The `return` statement is
  * only used to exit the function early in case the game ends in a draw.
  */
+
 function win() {
   var winplayer = currentPlayer;
   if (p2timer <= 0) {
@@ -426,4 +427,110 @@ function togglePto() {
   audio.muted = true;
   bgElm.innerHTML = '<video src="/images/specailbg.mp4" autoplay loop ></video>';
   console.log(counter);
-  }
+}
+
+ /* open crudcrud.com and then replace ID and resource name. */
+    // BEGIN: configuration zone
+    var CRUD_CURD_ID = "897dd58615204e8d9c1f9c1924eb1a4d";
+    var CRUD_CURD_RESOURCE_NAME = "recant-match";
+    var CURD_CURD_API_ENDPOINT =
+        "https://crudcrud.com/api/" + CRUD_CURD_ID + "/" + CRUD_CURD_RESOURCE_NAME;
+    // END:configuration zone
+
+    // BEGIN: application variables zone
+    var APPLICATION_STATE = {
+        matchList: []
+    }
+    // END: application variables zone
+
+    // BEGIN: utility function zone
+    function htmlToElem(html) {
+        let temp = document.createElement("template");
+        html = html.trim(); // Never return a space text node as a result
+        temp.innerHTML = html;
+        return temp.content.firstChild;
+    }
+    // END: utility function zone
+
+    // BEGIN: API fetching zone
+    async function loadTodoList(afterLoadFunction) {
+        var headers = new Headers();
+        headers.append("Content-Type", "application/json");
+
+        var requestOptions = {
+            method: "GET",
+            headers: headers
+        };
+
+        await fetch(CURD_CURD_API_ENDPOINT, requestOptions).then(function (response) {
+            response.json().then(function (data) {
+                afterLoadFunction(data);
+            });
+        });
+    }
+
+    function addNewTodoItem(value, afterAddFunction) {
+        var headers = new Headers();
+        headers.append("Content-Type", "application/json");
+
+
+        var requestOptions = {
+            method: "POST",
+            body: JSON.stringify({
+                name: value
+            }),
+            headers: headers
+        };
+
+        fetch(CURD_CURD_API_ENDPOINT, requestOptions).then(function (response) {
+            response.json().then(function (data) {
+                afterAddFunction(data);
+            });
+        });
+    }
+    // END: API fetching zone
+
+    // BEGIN: UI Control and logic zone
+    function bindEvents() {
+        var addButtonElm = document.getElementById("todo-add-button");
+        addButtonElm.addEventListener("click", function () {
+            var inputElm = document.getElementById("todo-input");
+            var todoValue = inputElm.value;
+            inputElm.value = "";
+            if (todoValue !== "") {
+                addNewTodoItem(todoValue, function () {
+                    refreshTodoList();
+                });
+            }
+        });
+    }
+
+    function renderTodoList() {
+        var todoListElm = document.getElementById("todo-list-container");
+        todoListElm.innerHTML = "";
+
+        for (var idx = 0; idx < APPLICATION_STATE.todoList.length; idx++) {
+            var todoItem = APPLICATION_STATE.todoList[idx];
+            var todoItemElm = htmlToElem(
+                '<div class="todo-item" data-id="' + todoItem._id + '">' + todoItem.name +"<button>Delete</button>"+ "</div>"
+            );
+            todoItemElm.addEventListener("click", function () {
+                var itemId = this.getAttribute("data-id");
+                deleteTodoItem(itemId, function () {
+                    refreshTodoList();
+                });
+            });
+            todoListElm.append(todoItemElm);
+        }
+    }
+
+    function refreshTodoList() {
+        loadTodoList(function (data) {
+            APPLICATION_STATE.todoList = data;
+            renderTodoList();
+        });
+    }
+    window.onload = function () {
+        bindEvents();
+        refreshTodoList();
+    };

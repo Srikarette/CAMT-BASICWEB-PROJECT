@@ -259,15 +259,7 @@
 /* ---------------------------History-Display-Part--------------------------- */
 .history-display-class .container{
     display: flex;
-    flex-direction: row;
-}
-.history-display-class .container  .p1-side{
-    width: 50%;
-    background: red;
-}
-.history-display-class .container  .p2-side{
-    width: 50%;
-    background: yellow;
+    flex-direction: column;
 }
 
 

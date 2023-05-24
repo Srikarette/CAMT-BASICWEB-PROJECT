@@ -11,7 +11,7 @@ function popUpHistory () {
       },
       html:
         "<h2>RECENT MATCH</h2><br><br>"+
-        "<div class='container'><div class='p1-side'><h3>Player 1</h3></div><div class='p2-side'><h3>Player 2</h3></div></div>",
+        "<div class='container'><div id='match-list'></div></div>",
     });
   });
 };
@@ -40,3 +40,4 @@ if (counter == 11) {
 
 console.log(counter);
 }
+
