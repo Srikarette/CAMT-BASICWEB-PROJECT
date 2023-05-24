@@ -18,17 +18,95 @@ var betal_played = 0;
 var p1timer = 78000; //120000 = 2 Minute 78000= 1.30 Minute
 var p2timer = 78000;
 let clickInProgress = false;
+
+
+let boardDimension = [];
+let betalDimension = [0,0];
+
+function loopBoard() {
+  for (let i = 0; i < GET_BOARD.SIZE[1]; i++) {
+    let temp = [];
+    for (let j = 0; j < GET_BOARD.SIZE[0]; j++) {
+      temp.push(0);
+    } boardDimension.push(temp);
+  }
+}
+loopBoard()
+
+
+
+function loadData(data) { //i = rows, j= column
+  for (let i = data.length - 1; i >= 0; i--) {
+    for (let j = 0; j < data[i].length; j++) {
+      console.log("print")
+      if (data[i][j] == 1) {
+        rows[i].children[j].classList.remove("empty");
+        rows[i].children[j].classList.add("red");
+      } else if (data[i][j] == 2) {
+        rows[i].children[j].classList.remove("empty");
+        rows[i].children[j].classList.add("yellow");
+      }
+      boardDimension[i][j] = data[i][j];
+    }
+  }
+}
+
+
+
+function getJsonObject(_json) {
+  const tempToObj = localStorage.getItem(_json);
+  return JSON.parse(tempToObj);
+} 
+
 //STUPID JS USE P2TIMER->Red , P1TIMER-> Yellow
 //p1timer = setTime(p1timer);
 //p2timer = setTime(p2timer);
-
+ 
 var myInterval;
 
+window.onbeforeunload = () => {
+  const board_reciever = {
+    'pattern' : boardDimension,
+    'betal' : betalDimension,
+    'p1_time' : p1timer,
+    'p2_time' : p2timer
+  }
+
+  const recieve_serialized = JSON.stringify(board_reciever);
+  localStorage.setItem('board', recieve_serialized);
+}
+function loopDelBetal(times, color) {
+  if (color == '.p-red') betalDimension[0] = times;
+  else betalDimension[1] = times;
+
+  for(let i = 0; i < times; i++) {
+    delBetal(color);
+  }
+}
+
 window.onload = function () {
+  const board_history = getJsonObject('board');
+  setBetalStand();
+  if (localStorage.hasOwnProperty('board')) {
+    loadData(board_history.pattern);
+    console.log(board_history.betal[0])
+
+    loopDelBetal(board_history.betal[0], '.p-red');
+    loopDelBetal(board_history.betal[1], '.p-yellow');
+    betal_played = board_history.betal[0] + board_history.betal[1];
+
+    console.log ("play " + betal_played);
+    p1timer = board_history.p1_time;
+    displayTimer(p1timer, "yellow");
+    p2timer = board_history.p2_time;
+    displayTimer(p2timer, "red");
+
+    localStorage.removeItem('board');
+  }
+
   musicBtn.autoplay = true;
   console.log(cells);
   playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
-  setBetalStand();
   infoBtn.addEventListener("click", () => {
     Swal.fire({
       width: "900px",
@@ -84,10 +162,10 @@ const checkWin = () => {
       }
     }
   }
-
+  
   // Check vertical
-  for (let i = 0; i < 7; i++) {
-    for (let j = 0; j < 3; j++) {
+  for (let i = 0; i < GET_SIZE.SIZE[0]; i++) {
+    for (let j = 0; j < GET_SIZE.SIZE[1]-3; j++) {
       if (
         checkFour(
           rows[j].children[i],
@@ -106,8 +184,8 @@ const checkWin = () => {
   }
 
   // Check diagonal (top left to bottom right)
-  for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 3; j++) {
+  for (let i = 0; i < GET_SIZE.SIZE[0]-3; i++) {
+    for (let j = 0; j < GET_SIZE.SIZE[1]-3; j++) {
       if (
         checkFour(
           rows[j].children[i],
@@ -126,8 +204,8 @@ const checkWin = () => {
   }
 
   // Check diagonal (bottom left to top right)
-  for (let i = 0; i < 4; i++) {
-    for (let j = 5; j > 2; j--) {
+  for (let i = 0; i < GET_SIZE.SIZE[0]-3; i++) {
+    for (let j = GET_SIZE.SIZE[1]-1; j > GET_SIZE.SIZE[1]-4; j--) {
       if (
         checkFour(
           rows[j].children[i],
@@ -151,6 +229,9 @@ const checkWin = () => {
 // Helper function to reset the board
 const resetBoard = () => {
   betal_played = 0;
+  betalDimension = [0,0];
+  boardDimension = [];
+  loopBoard();
   clearBetal();
   setBetalStand();
   clearInterval(myInterval);
@@ -242,6 +323,10 @@ cells.forEach((cell) => {
           if (rows[i].children[columnIndex].classList.contains("empty")) {
             rows[i].children[columnIndex].classList.remove("empty");
             rows[i].children[columnIndex].classList.add(currentPlayer);
+
+            if (currentPlayer == "red") boardDimension[i][columnIndex] = 1;
+            else if (currentPlayer == "yellow") boardDimension[i][columnIndex] = 2;
+            
             rowIndex = i;
             break;
           }
@@ -265,15 +350,15 @@ cells.forEach((cell) => {
             p1Sound.play();
             currentPlayer = "yellow";
             betal_played += delBetal(".p-red");
+            betalDimension[0]++;
           } else {
             p2Sound.play();
             currentPlayer = "red";
             betal_played += delBetal(".p-yellow");
+            betalDimension[1]++;
           }
 
-          if (betal_played == 42) {
-            win();
-          }
+          if (betal_played == (GET_BOARD.SIZE[0] * GET_BOARD.SIZE[1])) win();
         }
       }
       playerTurn.textContent = `Current Player : ${currentPlayer.toUpperCase()}`;
@@ -382,5 +467,11 @@ var playAudio = function() {
 document.addEventListener('click', playAudio);
 
 function toggleMute() {
+<<<<<<< Updated upstream
     audio.muted = !audio.muted;
 }
+=======
+  audio.muted = !audio.muted;
+}
+
+>>>>>>> Stashed changes

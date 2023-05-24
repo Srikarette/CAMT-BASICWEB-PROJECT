@@ -225,6 +225,14 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
+.betal-standy-add {
+  position: absolute;
+  z-index: 3;
+  width: 250px;
+  height: 520px;
+  align-items: center;
+}
+
 .betal-flex {
   position: relative;
   z-index: 10;
@@ -235,6 +243,18 @@ h1 {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
+}
+
+.align-flex { position: absolute; }
+.red-betal {
+  left: 20%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+}
+.yellow-betal {
+  right: -80%;
+  top: 55%;
+  transform: translate(-50%, -50%);
 }
 
 .betal-flex > div {
