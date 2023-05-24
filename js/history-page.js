@@ -1,8 +1,8 @@
 var histortElm = document.querySelector('.history-game-button')
 var counter = 0;
 
-function popUpHistory () {
-  console.log('click!');
+function popUpHistory() {
+  console.log("click!");
   histortElm.addEventListener("click", () => {
     Swal.fire({
       width: "900px",
@@ -10,11 +10,13 @@ function popUpHistory () {
         htmlContainer: "history-display-class",
       },
       html:
-        "<h2>RECENT MATCH</h2><br><br>"+
-        "<div class='container'><div id='match-list'></div></div>",
+        "<h2>RECENT MATCH</h2><br><br>" +
+        "<div class='container'><div id='match-list-container'></div></div></div>",
     });
+    refreshTodoList(); // Call the modified refreshTodoList function
   });
-};
+}
+
 
 
 var audio = new Audio('sounds/Astral.mp3');

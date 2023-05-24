@@ -260,6 +260,11 @@
 .history-display-class .container{
     display: flex;
     flex-direction: column;
+    font-size: small;
+    text-align: left;
+}
+.history-display-class .container .menu-list{
+    
 }
 
 
