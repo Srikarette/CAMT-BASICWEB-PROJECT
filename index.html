@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect 4 Game</title>
+    <meta name="description" content="Play the Connect 4 Game online and have fun. Switch between light and dark themes, view game information and rules, change the environment, and toggle music.">
+    <title>Connect 4 Game - Play Online and Have Fun</title>
     <link rel="stylesheet" href="./css/manu.css">
     <link rel="stylesheet" href="./css/connect-four-game.css">
     <link rel="stylesheet" href="./css/universal-header.css">
+    <link rel="stylesheet" href="./css/background-animation.css">
+  
     <script src="https://kit.fontawesome.com/5dc127e2c6.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="./images/icon.png">
-
+    <link rel="icon" type="image/x-icon" href="./images/icon.png" alt="Connect 4 Game Icon">
 </head>
 <body> 
     <div class="main-content">
@@ -83,7 +85,6 @@
         <h5 class="subtitle">VERY FUN!</h5>
         <a class="start-game-button" href="connect-four-game.html">-START-</a>
         <a class="continue-game-button" href="connect-four-game.html">-CONTINUE-</a>
-
         <p class="history-game-button" onclick="popUpHistory()">-HISTORY-</p >
     </div>
 
@@ -119,7 +120,6 @@
      });
    }
    window.onload = function () {
-     setBetalStand();
      refreshTodoList();
    };
 </script>

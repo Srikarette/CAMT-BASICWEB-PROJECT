@@ -6,8 +6,6 @@ var isTheme4 = false;
 var counter = 0;
 
 function toggleNightMode() {
-  console.log(userChoice)
-
     var backGroundElm = document.querySelector('.circles');
     var textElm = document.querySelector('.title-base');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -17,7 +15,6 @@ function toggleNightMode() {
     
     // Apply night mode
     if (isNightMode === true) {
-      userChoice[0].style.border = '1px solid yellow';
       backGroundElm.style.backgroundColor = 'white';
       textElm.style.color = '#232241';
       for (let i = 0; i < bgElm.length; i++) {
