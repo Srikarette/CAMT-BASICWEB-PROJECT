@@ -391,3 +391,20 @@ document.addEventListener("click", playAudio);
 function toggleMute() {
   audio.muted = !audio.muted;
 }
+
+function loadData(data) { //i = rows, j= column
+  let numberofRow = data.length;
+  let numberofColumn = data.length;
+  for (let i = data.length - 1; i >= 0; i--) {
+
+    for (let j = 0; j < data.length; j++) {
+      console.log("print")
+      if (data[i][j] == 1) {
+        rows[i].children[j].classList.add("red");
+      } else if (data[i][j] == 2) {
+        rows[i].children[j].classList.add("yellow");
+      }
+
+    }
+  }
+}
