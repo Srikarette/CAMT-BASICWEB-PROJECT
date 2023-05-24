@@ -348,29 +348,20 @@ function displayTimer(timer, current) {
 var winplayer;
 function win() {
   winplayer = currentPlayer;
-
-  // Check if player 2's timer has run out
   if (p2timer <= 0) {
     winplayer = "yellow";
-  }
-  // Check if player 1's timer has run out
-  else if (p1timer <= 0) {
+  } else if (p1timer <= 0) {
     winplayer = "red";
   }
-
-  // Check if all moves have been played
   if (betal_played == 42) {
-    // Compare timers of both players
     if (p2timer > p1timer) {
       winplayer = "red";
     } else if (p1timer > p2timer) {
       winplayer = "yellow";
     } else {
-      // It's a draw
       drawSound.play();
       clearInterval(myInterval);
       message.textContent = "Draw!";
-
       setTimeout(function () {
         Swal.fire({
           title: "Draw!",
@@ -380,21 +371,13 @@ function win() {
           resetBoard();
         });
       }, 1000);
-
       resetButton.disabled = false;
       return;
     }
   }
-
   winSound.play();
   alertEvent(winplayer, "win!");
-
-  // Add match result to match history
-  addNewTodoItem("Match Result", function() {
-    refreshTodoList();
-  }, winplayer);
 }
-
 
 function alertEvent(winplayer, title) {
   clearInterval(myInterval);
@@ -448,117 +431,3 @@ function togglePto() {
 
 
   // START API CALLED
- // BEGIN: configuration zone
-    var CRUD_CURD_ID = "897dd58615204e8d9c1f9c1924eb1a4d";
-    var CRUD_CURD_RESOURCE_NAME = "User-text";
-    var CURD_CURD_API_ENDPOINT =
-        "https://crudcrud.com/api/" + CRUD_CURD_ID + "/" + CRUD_CURD_RESOURCE_NAME;
-    // END:configuration zone
-
-    // BEGIN: application variables zone
-    var APPLICATION_STATE = {
-        todoList: []
-    }
-    // END: application variables zone
-
-    // BEGIN: utility function zone
-    function htmlToElem(html) {
-        let temp = document.createElement("template");
-        html = html.trim(); // Never return a space text node as a result
-        temp.innerHTML = html;
-        return temp.content.firstChild;
-    }
-    // END: utility function zone
-
-    // BEGIN: API fetching zone
-    async function loadTodoList(afterLoadFunction) {
-        var headers = new Headers();
-        headers.append("Content-Type", "application/json");
-
-        var requestOptions = {
-            method: "GET",
-            headers: headers
-        };
-
-        await fetch(CURD_CURD_API_ENDPOINT, requestOptions).then(function (response) {
-            response.json().then(function (data) {
-                afterLoadFunction(data);
-            });
-        });
-    }
-
-    function addNewTodoItem(value, afterAddFunction, winPlayer) {
-      var headers = new Headers();
-      headers.append("Content-Type", "application/json");
-  
-      var requestOptions = {
-          method: "POST",
-          body: JSON.stringify({
-              name: value,
-              winPlayer: winPlayer
-          }),
-          headers: headers
-      };
-  
-      fetch(CURD_CURD_API_ENDPOINT, requestOptions).then(function (response) {
-          response.json().then(function (data) {
-              afterAddFunction(data);
-          });
-      });
-  }
-    // END: API fetching zone
-
-    // BEGIN: UI Control and logic zone
-    function bindEvents() {
-        var addButtonElm = document.getElementById("todo-add-button");
-        addButtonElm.addEventListener("click", function () {
-            var inputElm = document.getElementById("todo-input");
-            var todoValue = inputElm.value;
-            inputElm.value = "";
-            if (todoValue !== "") {
-                addNewTodoItem(todoValue, function () {
-                    refreshTodoList();
-                });
-            }
-        });
-    }
-
-    function renderTodoList() {
-        var todoListElm = document.getElementById("todo-list-container");
-        todoListElm.innerHTML = "";
-
-        for (var idx = 0; idx < APPLICATION_STATE.todoList.length; idx++) {
-            var todoItem = APPLICATION_STATE.todoList[idx];
-            var todoItemElm = htmlToElem(
-                '<div class="todo-item" data-id="' + todoItem._id + '">' + todoItem.name +"<button>Delete</button>"+ "</div>"
-            );
-            todoItemElm.addEventListener("click", function () {
-                var itemId = this.getAttribute("data-id");
-                deleteTodoItem(itemId, function () {
-                    refreshTodoList();
-                });
-            });
-            todoListElm.append(todoItemElm);
-        }
-    }
-
-    function refreshTodoList() {
-        loadTodoList(function (data) {
-            APPLICATION_STATE.todoList = data;
-            renderTodoList();
-        });
-    }
-
-    function htmlToElem(html) {
-      let temp = document.createElement("template");
-      html = html.trim();
-      temp.innerHTML = html;
-      return temp.content.firstChild;
-    }
-  
-
-    window.onload = function () {
-        bindEvents();
-        refreshTodoList();
-    };
-    // END: UI Control and logic zone
