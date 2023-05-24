@@ -33,6 +33,7 @@ function toggleNightMode() {
 
 function toggleNightModeEx() {
     counter++;
+    console.log(counter);
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -63,6 +64,7 @@ function toggleNightModeEx() {
 
 function toggleTheme01() {
     counter++;
+    console.log(counter);
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -73,6 +75,9 @@ function toggleTheme01() {
     isTheme2 = false;
     isTheme3 = false;
     isTheme4 = false;
+    if(counter==21){
+      togglePto();
+    }
     
     // Apply night mode
     if (isTheme1 === false) {
@@ -91,6 +96,7 @@ function toggleTheme01() {
 
 function toggleTheme02() {
     counter++;
+    console.log(counter);
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -101,6 +107,9 @@ function toggleTheme02() {
     isTheme1 = false;
     isTheme3 = false;
     isTheme4 = false;
+    if(counter==21){
+      togglePto();
+    }
     
     // Apply night mode
     if (isTheme2 === false) {
@@ -119,6 +128,7 @@ function toggleTheme02() {
 
 function toggleTheme03() {
     counter++;
+    console.log(counter);
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -129,6 +139,9 @@ function toggleTheme03() {
     isTheme1 = false;
     isTheme2 = false;
     isTheme4 = false;
+    if(counter==21){
+      togglePto();
+    }
     
     // Apply night mode
     if (isTheme3 === false) {
@@ -147,6 +160,7 @@ function toggleTheme03() {
 
 function toggleTheme04() {
     counter++;
+    console.log(counter);
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -157,6 +171,9 @@ function toggleTheme04() {
     isTheme1 = false;
     isTheme2 = false;
     isTheme3 = false;
+    if(counter==21){
+      togglePto();
+    }
 
     
     // Apply night mode
@@ -175,11 +192,8 @@ function toggleTheme04() {
 }
 
 function togglePto() {
-  console.log("P to is coming")
-  if(counter==20){
-    var bgElm = document.querySelector('.circles');
-    audio.muted = true;
-    bgElm.innerHTML = '<video src="/images/specailbg.mp4" autoplay loop ></video>';
-    console.log(counter);
-  }
+  var bgElm = document.querySelector('.circles');
+  audio.muted = true;
+  bgElm.innerHTML = '<video src="/images/specailbg.mp4" autoplay loop ></video>';
+  console.log(counter);
 }
