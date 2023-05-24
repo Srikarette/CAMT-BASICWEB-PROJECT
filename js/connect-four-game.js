@@ -574,6 +574,7 @@ function togglePto() {
     
     
     window.onload = function () {
+      setBetalStand();
       refreshTodoList();
     };
     // END: UI Control and logic zone
