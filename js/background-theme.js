@@ -3,6 +3,7 @@ var isTheme1 = false;
 var isTheme2 = false;
 var isTheme3 = false;
 var isTheme4 = false;
+var counter = 0;
 
 function toggleNightMode() {
 
@@ -31,6 +32,7 @@ function toggleNightMode() {
 }
 
 function toggleNightModeEx() {
+    counter++;
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -60,6 +62,7 @@ function toggleNightModeEx() {
 }
 
 function toggleTheme01() {
+    counter++;
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -87,6 +90,7 @@ function toggleTheme01() {
 }
 
 function toggleTheme02() {
+    counter++;
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -114,6 +118,7 @@ function toggleTheme02() {
 }
 
 function toggleTheme03() {
+    counter++;
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -141,6 +146,7 @@ function toggleTheme03() {
 }
 
 function toggleTheme04() {
+    counter++;
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
@@ -166,4 +172,14 @@ function toggleTheme04() {
       }
     }
     console.log("Theme03 "+isTheme3);
+}
+
+function togglePto() {
+  console.log("P to is coming")
+  if(counter==20){
+    var bgElm = document.querySelector('.circles');
+    audio.muted = true;
+    bgElm.innerHTML = '<video src="/images/specailbg.mp4" autoplay loop ></video>';
+    console.log(counter);
+  }
 }
