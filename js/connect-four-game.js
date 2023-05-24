@@ -184,17 +184,24 @@ cells.forEach((cell) => {
           currentPlayerHover = i;
         }
         rows[i].children[columnIndex].classList.add("hover");
-        console.log(i, columnIndex);
       }
     }
-    if (currentPlayer == "red") {
-      rows[currentPlayerHover].children[columnIndex].classList.remove("hover");
-      rows[currentPlayerHover].children[columnIndex].classList.add("redHover");
-    } else {
-      rows[currentPlayerHover].children[columnIndex].classList.remove("hover");
-      rows[currentPlayerHover].children[columnIndex].classList.add(
-        "yellowHover"
-      );
+    if (rows[0].children[columnIndex].classList.contains("empty")) {
+      if (currentPlayer == "red") {
+        rows[currentPlayerHover].children[columnIndex].classList.remove(
+          "hover"
+        );
+        rows[currentPlayerHover].children[columnIndex].classList.add(
+          "redHover"
+        );
+      } else {
+        rows[currentPlayerHover].children[columnIndex].classList.remove(
+          "hover"
+        );
+        rows[currentPlayerHover].children[columnIndex].classList.add(
+          "yellowHover"
+        );
+      }
     }
     currentPlayerHover = 0;
   });
@@ -373,14 +380,14 @@ function alertEvent(winplayer, title) {
   resetButton.disabled = false;
 }
 
-var audio = new Audio('sounds/bgsound.mp3');
-var playAudio = function() {
-    audio.play();
-    audio.loop = true;
-    document.removeEventListener('click', playAudio);
+var audio = new Audio("sounds/bgsound.mp3");
+var playAudio = function () {
+  audio.play();
+  audio.loop = true;
+  document.removeEventListener("click", playAudio);
 };
-document.addEventListener('click', playAudio);
+document.addEventListener("click", playAudio);
 
 function toggleMute() {
-    audio.muted = !audio.muted;
+  audio.muted = !audio.muted;
 }
