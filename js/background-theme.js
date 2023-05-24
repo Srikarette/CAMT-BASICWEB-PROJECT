@@ -6,6 +6,7 @@ var isTheme4 = false;
 var counter = 0;
 
 function toggleNightMode() {
+  console.log(userChoice)
 
     var backGroundElm = document.querySelector('.circles');
     var textElm = document.querySelector('.title-base');
@@ -16,6 +17,7 @@ function toggleNightMode() {
     
     // Apply night mode
     if (isNightMode === true) {
+      userChoice[0].style.border = '1px solid yellow';
       backGroundElm.style.backgroundColor = 'white';
       textElm.style.color = '#232241';
       for (let i = 0; i < bgElm.length; i++) {
@@ -45,6 +47,7 @@ function toggleNightModeEx() {
     isTheme2 = false;
     isTheme3 = false;
     isTheme4 = false;
+  
     
     // Apply night mode
     if (isNightMode === true) {
@@ -52,13 +55,18 @@ function toggleNightModeEx() {
       for (let i = 0; i < bgElm.length; i++) {
         bgElm[i].style.background = 'white';
       }
-      
+      buttonElm[0].style.border ='3px solid black';
     } else {
-      backGroundElm.style.backgroundColor = 'white';
+      backGroundElm.style.backgroundColor = 'grey';
       for (let i = 0; i < bgElm.length; i++) {
-        bgElm[i].style.background = '#FFB800';
+        bgElm[i].style.background = 'gold';
       }
-    }
+      buttonElm[0].style.border ='3px solid yellow';
+    } 
+    buttonElm[1].style.border ='3px solid black'; 
+    buttonElm[2].style.border ='3px solid black'; 
+    buttonElm[3].style.border ='3px solid black'; 
+    buttonElm[4].style.border ='3px solid black'; 
     console.log("NightMode "+isNightMode);
 }
 
@@ -68,6 +76,7 @@ function toggleTheme01() {
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
+    var buttonElm = document.querySelector('.background-theme-class').getElementsByTagName('button');
 
     // Toggle night mode
     isTheme1 = !isTheme1;
@@ -85,12 +94,18 @@ function toggleTheme01() {
       for (let i = 0; i < bgElm.length; i++) {
         bgElm[i].style.background = 'white';
       }
+      buttonElm[1].style.border ='3px solid black'; 
     } else {
       backGroundElm.style.backgroundColor = '#F79327';
       for (let i = 0; i < bgElm.length; i++) {
         bgElm[i].style.background = '#B70404';
       }
+      buttonElm[1].style.border ='3px solid yellow'; 
     }
+    buttonElm[0].style.border ='3px solid black';
+    buttonElm[2].style.border ='3px solid black'; 
+    buttonElm[3].style.border ='3px solid black'; 
+    buttonElm[4].style.border ='3px solid black'; 
     console.log("Theme01 "+isTheme1);
 }
 
@@ -100,6 +115,7 @@ function toggleTheme02() {
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
+    var buttonElm = document.querySelector('.background-theme-class').getElementsByTagName('button');
 
     // Toggle night mode
     isTheme2 = !isTheme2;
@@ -117,12 +133,18 @@ function toggleTheme02() {
       for (let i = 0; i < bgElm.length; i++) {
         bgElm[i].style.background = 'white';
       }
+      buttonElm[2].style.border ='3px solid black';
     } else {
       backGroundElm.style.backgroundColor = '#F2BED1';
       for (let i = 0; i < bgElm.length; i++) {
         bgElm[i].style.background = '#F8E8EE';
       }
+      buttonElm[2].style.border ='3px solid yellow';
     }
+    buttonElm[0].style.border ='3px solid black'; 
+    buttonElm[1].style.border ='3px solid black';  
+    buttonElm[3].style.border ='3px solid black';
+    buttonElm[4].style.border ='3px solid black'; 
     console.log("Theme02 "+isTheme2);
 }
 
@@ -132,6 +154,7 @@ function toggleTheme03() {
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
+    var buttonElm = document.querySelector('.background-theme-class').getElementsByTagName('button');
 
     // Toggle night mode
     isTheme3 = !isTheme3;
@@ -149,12 +172,18 @@ function toggleTheme03() {
       for (let i = 0; i < bgElm.length; i++) {
         bgElm[i].style.background = 'white';
       }
+      buttonElm[3].style.border ='3px solid black';
     } else {
       backGroundElm.style.backgroundColor = '#4C4C6D';
       for (let i = 0; i < bgElm.length; i++) {
         bgElm[i].style.background = '#1B9C85';
       }
+      buttonElm[3].style.border ='3px solid yellow';
     }
+    buttonElm[0].style.border ='3px solid black' 
+    buttonElm[1].style.border ='3px solid black' 
+    buttonElm[2].style.border ='3px solid black' 
+    buttonElm[4].style.border ='3px solid black' 
     console.log("Theme03 "+isTheme3);
 }
 
@@ -164,6 +193,7 @@ function toggleTheme04() {
 
     var backGroundElm = document.querySelector('.circles');
     var bgElm = document.querySelector('.circles').getElementsByTagName('li');
+    var buttonElm = document.querySelector('.background-theme-class').getElementsByTagName('button');
 
     // Toggle night mode
     isTheme4 = !isTheme4;
@@ -182,12 +212,18 @@ function toggleTheme04() {
       for (let i = 0; i < bgElm.length; i++) {
         bgElm[i].style.background = 'white';
       }
+      buttonElm[4].style.border ='3px solid black'; 
     } else {
       backGroundElm.style.backgroundColor = '#97DEFF';
       for (let i = 0; i < bgElm.length; i++) {
         bgElm[i].style.background = '#62CDFF';
       }
+      buttonElm[4].style.border ='3px solid yellow';
     }
+    buttonElm[0].style.border ='3px solid black'; 
+    buttonElm[1].style.border ='3px solid black'; 
+    buttonElm[2].style.border ='3px solid black'; 
+    buttonElm[3].style.border ='3px solid black'; 
     console.log("Theme03 "+isTheme3);
 }
 

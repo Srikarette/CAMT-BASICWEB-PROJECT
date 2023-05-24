@@ -56,7 +56,7 @@ window.onload = function () {
       },
       html:
       "<h2>SELECT THEME</h2><br><br>" +
-      '<button style="background:#ffffff;" onclick="toggleNightModeEx()"></button>' +
+      '<button style="background:grey;" onclick="toggleNightModeEx()"></button>' +
       '<button style="background:#f79327;" onclick="toggleTheme01()"></button>' +
       '<button style="background:#f2bed1;" onclick="toggleTheme02()"></button>' +
       '<button style="background:#2c807d;" onclick="toggleTheme03()"></button>' +
@@ -65,6 +65,7 @@ window.onload = function () {
     
   });
 };
+
 
 // Helper function to check for four in a row
 const checkFour = (a, b, c, d) => {
