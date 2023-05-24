@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connect 4 Game</title>
     <link rel="stylesheet" href="./css/manu.css">
+    <link rel="stylesheet" href="/css/connect-four-game.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./css/universal-header.css">
-    
     <script src="https://kit.fontawesome.com/5dc127e2c6.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,37 +84,12 @@
         <h5 class="subtitle">VERY FUN!</h5>
         <a class="start-game-button" href="connect-four-game.html">-START-</a>
         <a class="continue-game-button" href="connect-four-game.html">-CONTINUE-</a>
-        <a class="history-game-button" href="connect-four-game.html">-HISTORY-</a>
+
+        <p class="history-game-button" onclick="popUpHistory()">-HISTORY-</p >
     </div>
 
 </body>
 
+<script src="/js/index-page.js"></script>
 <script src="/js/background-theme.js"></script>
-<script>
-    var counter = 0;
-
-    var audio = new Audio('sounds/Astral.mp3');
-    var playAudio = function() {
-        audio.play();
-        audio.loop = true;
-        document.removeEventListener('click', playAudio);
-    };
-    document.addEventListener('click', playAudio);
-
-    function toggleMute() {
-        audio.muted = !audio.muted;
-    }
-    function toggleEsterEgg() {
-    counter++;
-    var bgElm = document.querySelector('.circles');
-    if (counter == 11) {
-      // Replace the following line with code to embed a video player and play the video
-      audio.muted = true;
-      bgElm.innerHTML = '<video src="/images/specailbg.mp4" muted autoplay loop ></video>';
-    }
-
-    console.log(counter);
-    }
-
-</script>
 </html>

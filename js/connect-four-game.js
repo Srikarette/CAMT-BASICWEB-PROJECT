@@ -421,3 +421,9 @@ function loadData(data) { //i = rows, j= column
     }
   }
 }
+function togglePto() {
+  var bgElm = document.querySelector('.circles');
+  audio.muted = true;
+  bgElm.innerHTML = '<video src="/images/specailbg.mp4" autoplay loop ></video>';
+  console.log(counter);
+  }

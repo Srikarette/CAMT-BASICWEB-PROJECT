@@ -180,6 +180,12 @@ h1 {
   background: white;
   border-radius: 100%;
 }
+.player-1-icon{
+  background: #e31111;
+}
+.player-2-icon{
+  background: #e8c900;
+}
 
 .player-1-details, .player-2-details {
   display: flex;

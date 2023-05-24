@@ -211,6 +211,7 @@
     -webkit-background-clip: text;
     animation: text-animate 8s linear;
     animation-iteration-count: infinite;
+    cursor: pointer;
 }
 .history-game-button:hover{
     background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
@@ -254,6 +255,19 @@
         font-size: 20px;
     }
    
+}
+/* ---------------------------History-Display-Part--------------------------- */
+.history-display-class .container{
+    display: flex;
+    flex-direction: row;
+}
+.history-display-class .container  .p1-side{
+    width: 50%;
+    background: red;
+}
+.history-display-class .container  .p2-side{
+    width: 50%;
+    background: yellow;
 }
 
 
