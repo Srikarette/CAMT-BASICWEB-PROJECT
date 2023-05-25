@@ -154,8 +154,8 @@
       display: flex;
       overflow-y: scroll;
       flex-direction: column;
-      font-size: small;
-      text-align: left;
+      font-size: larger;
+      height: 125px;
   }
   .match-item{
       margin: 10px 0px 0px 0px;
