@@ -152,6 +152,7 @@
   /* ---------------------------History-Display-Part--------------------------- */
   .history-display-class .container{
       display: flex;
+      overflow-y: scroll;
       flex-direction: column;
       font-size: small;
       text-align: left;
