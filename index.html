@@ -87,6 +87,7 @@
      function renderTodoList() {
      var todoListElm = document.getElementById("match-list-container");
      todoListElm.innerHTML = "";
+     console.log(APPLICATION_STATE);
    
      for (var idx = 0; idx < APPLICATION_STATE.todoList.length; idx++) {
        var todoItem = APPLICATION_STATE.todoList[idx];

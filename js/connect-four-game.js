@@ -103,6 +103,7 @@ window.onload = function () {
     p2timer = board_history.p2_time;
     displayTimer(p2timer, "red");
 
+    console.log(board_history);
     localStorage.removeItem('board');
   }
 
