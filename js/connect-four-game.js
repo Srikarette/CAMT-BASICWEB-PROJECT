@@ -147,7 +147,7 @@ const checkFour = (a, b, c, d) => {
 const checkWin = () => {
   // Check horizontal
   for (let row of rows) {
-    for (let i = 0; i < GET_SIZE.SIZE[1]-2; i++) { // 7*6 = 4 8*7 = 5
+    for (let i = 0; i < GET_SIZE.SIZE[0]-3; i++) { // 7*6 = 4 8*7 = 5
       if (
         checkFour(
           row.children[i],
@@ -324,7 +324,7 @@ cells.forEach((cell) => {
           if (rows[i].children[columnIndex].classList.contains("empty")) {
             rows[i].children[columnIndex].classList.remove("empty");
             rows[i].children[columnIndex].classList.add(currentPlayer);
-            console.log(currentPlayer + " : Round!");
+            console.log("Round : "+currentPlayer+"!");
             if (currentPlayer == "red") boardDimension[i][columnIndex] = 1;
             else if (currentPlayer == "yellow") boardDimension[i][columnIndex] = 2;
             
