@@ -1,14 +1,7 @@
-var hBtn = document.querySelector(".home-element");
-var bBtn = document.querySelector(".back-element");
+
 var infoBtn = document.querySelector(".information-element");
 
-hBtn.addEventListener("click", () => {
-    window.open('./index.html', '_self');
-})
 
-bBtn.addEventListener("click", () => {
-    window.open('./board-selector.html', '_self');
-})
 
 infoBtn.addEventListener("click", () => {
     Swal.fire({

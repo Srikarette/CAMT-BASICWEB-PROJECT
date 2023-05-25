@@ -17,6 +17,12 @@
         <div class="button-container">
           <button class="home-element back-modify">
             <i class="fa-solid fa-arrow-left" style="color: #1f1f33;"></i>
+            <script>
+              var hBtn = document.querySelector(".home-element");
+              hBtn.addEventListener("click", () => {
+                window.open('./index.html', '_self');
+              })
+            </script>
           </button>
           
           <div class="header-element-popup">
