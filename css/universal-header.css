@@ -9,6 +9,7 @@
     - reset               [button](active action)
     - informations        [button](alert popup)
  */
+
  .header {
     position: fixed;
     z-index: 11;

@@ -1,8 +1,10 @@
 * {
   box-sizing: border-box;
   margin: 0; padding: 0;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Righteous', cursive;
 }
+
+.message, .player-turn { visibility: hidden;}
 
 .board {
   max-width: 520px;
@@ -175,6 +177,7 @@ h1 {
 
 
 .player-1-icon, .player-2-icon {
+  position: relative;
   width: 70px;
   height: 70px;
   background: white;
@@ -231,6 +234,14 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
+.betal-standy-add {
+  position: absolute;
+  z-index: 3;
+  width: 250px;
+  height: 520px;
+  align-items: center;
+}
+
 .betal-flex {
   position: relative;
   z-index: 10;
@@ -241,6 +252,18 @@ h1 {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
+}
+
+.align-flex { position: absolute; }
+.red-betal {
+  left: 20%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+}
+.yellow-betal {
+  right: -80%;
+  top: 55%;
+  transform: translate(-50%, -50%);
 }
 
 .betal-flex > div {
@@ -255,4 +278,9 @@ h1 {
 }
 .p-yellow {
   background-image: url('../images/yellow-betal.png');
+}
+
+.icon-profile {
+  position: relative;
+  object-fit: cover;
 }
