@@ -69,7 +69,8 @@ window.onbeforeunload = () => {
     'pattern' : boardDimension,
     'betal' : betalDimension,
     'p1_time' : p1timer,
-    'p2_time' : p2timer
+    'p2_time' : p2timer,
+    'current_player' : currentPlayer
   }
 
   const recieve_serialized = JSON.stringify(board_reciever);
@@ -94,8 +95,9 @@ window.onload = function () {
     loopDelBetal(board_history.betal[0], '.p-red');
     loopDelBetal(board_history.betal[1], '.p-yellow');
     betal_played = board_history.betal[0] + board_history.betal[1];
-
+    console.log(board_history.current_player);
     console.log ("play " + betal_played);
+    currentPlayer = board_history.current_player;
     p1timer = board_history.p1_time;
     displayTimer(p1timer, "yellow");
     p2timer = board_history.p2_time;
@@ -145,7 +147,7 @@ const checkFour = (a, b, c, d) => {
 const checkWin = () => {
   // Check horizontal
   for (let row of rows) {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < GET_SIZE.SIZE[1]-2; i++) { // 7*6 = 4 8*7 = 5
       if (
         checkFour(
           row.children[i],
@@ -265,7 +267,6 @@ cells.forEach((cell) => {
           currentPlayerHover = i;
         }
         rows[i].children[columnIndex].classList.add("hover");
-        console.log(i, columnIndex);
       }
     }
     if (currentPlayer == "red") {
@@ -323,7 +324,7 @@ cells.forEach((cell) => {
           if (rows[i].children[columnIndex].classList.contains("empty")) {
             rows[i].children[columnIndex].classList.remove("empty");
             rows[i].children[columnIndex].classList.add(currentPlayer);
-
+            console.log(currentPlayer + " : Round!");
             if (currentPlayer == "red") boardDimension[i][columnIndex] = 1;
             else if (currentPlayer == "yellow") boardDimension[i][columnIndex] = 2;
             
@@ -370,7 +371,6 @@ cells.forEach((cell) => {
 // Add event listener to reset button
 resetButton.addEventListener("click", (e) => {
   resetBoard();
-  e.target.disabled = true;
 });
 
 //function setTime(playerTime) {
@@ -435,7 +435,6 @@ function win() {
           resetBoard();
         });
       }, 1000);
-      resetButton.disabled = false;
       return;
     }
   }
