@@ -156,6 +156,7 @@
       flex-direction: column;
       font-size: larger;
       height: 125px;
+      text-align: left;
   }
   .match-item{
       margin: 10px 0px 0px 0px;

@@ -4,6 +4,7 @@ var isTheme2 = false;
 var isTheme3 = false;
 var isTheme4 = false;
 var counter = 0;
+var trigger = 21;
 
 function toggleNightMode() {
     var backGroundElm = document.querySelector('.circles');
@@ -44,6 +45,9 @@ function toggleNightModeEx() {
     isTheme2 = false;
     isTheme3 = false;
     isTheme4 = false;
+    if(counter==trigger){
+      togglePto();
+    }
   
     
     // Apply night mode
@@ -81,7 +85,7 @@ function toggleTheme01() {
     isTheme2 = false;
     isTheme3 = false;
     isTheme4 = false;
-    if(counter==21){
+    if(counter==trigger){
       togglePto();
     }
     
@@ -120,7 +124,7 @@ function toggleTheme02() {
     isTheme1 = false;
     isTheme3 = false;
     isTheme4 = false;
-    if(counter==21){
+    if(counter==trigger){
       togglePto();
     }
     
@@ -159,7 +163,7 @@ function toggleTheme03() {
     isTheme1 = false;
     isTheme2 = false;
     isTheme4 = false;
-    if(counter==21){
+    if(counter==trigger){
       togglePto();
     }
     
@@ -198,7 +202,7 @@ function toggleTheme04() {
     isTheme1 = false;
     isTheme2 = false;
     isTheme3 = false;
-    if(counter==21){
+    if(counter==trigger){
       togglePto();
     }
 
