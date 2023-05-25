@@ -3,14 +3,15 @@ const flexContainer = document.getElementsByClassName('flex-container')[0];
 
 [0,1,2,3].forEach((element) => {
     const divContainer = document.createElement('div');
-    divContainer.classList.add('button-container');
-    divContainer.innerHTML = `<button class="button-element" id="b${element}"></button>`;
+    divContainer.classList.add('button-container-2');
+    divContainer.innerHTML = `<button class="button-element" id="b${element}"><p>SELECT ${board_size[element]}</p></button>`;
     flexContainer.appendChild(divContainer);
 
     const getButton = document.getElementById(`b${element}`);
     getButton.style.backgroundImage = `url(./images/board_size/${board_size[element]}.png)`;
     
     getButton.addEventListener('click', () => {
+        localStorage.clear();
         const board_reciever = {
             'SIZE' : seperateToArr(board_size[element])
         }

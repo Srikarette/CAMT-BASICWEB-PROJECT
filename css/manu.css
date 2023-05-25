@@ -6,28 +6,23 @@
 }
 
 
-/* body {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: #161616;
-        } */
 .main-content{
     display: flex;
     flex-direction: column;
     align-items: center;
     align-self: center;
 }
+
+/* This is the beginning background animation part */
+/* You can change the color of it by changing background in "circle li" class */
 .circles {
         overflow: hidden;
         /* border-radius: 30px; */
-        background: #282828;
+        background: #232241;
         width: 100%;
-        height: 91.7vh;
+        height: 100vh;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        transition: 0.3s;
     }
         
 .circles li {
@@ -35,10 +30,11 @@
         list-style: none;
         width: 20px;
         height: 20px;
-        background: #4972ee;
+        background: white;
         animation: animate 15s linear infinite;
         bottom: -100%;
         left: -80%;
+        transition: 0.3s;
     }
         
 .circles li:nth-child(1) {
@@ -128,6 +124,9 @@
         border-radius: 50%;
     }
 }
+/* This is the end of background animation part */
+
+
 .title-base{
     position: absolute;
     top: 40%;
@@ -136,6 +135,7 @@
     letter-spacing: 5px;
     font-weight: 700;
     color:white;
+    transition: 0.3s;
 }
 
 .title-rgb{
@@ -153,18 +153,11 @@
     animation: text-animate 8s linear;
     animation-iteration-count: infinite;
 }
-@keyframes text-animate{
-    0%{
-        background-position: 0%;
-    }
-    100%{
-        background-position: 400%;
-    }
-}
 .start-game-button{
     position: absolute;
-    top: 60%;
-    transform: translateY(-60%);
+    top: 55%;
+    transform: translateY(-55%);
+    transition: 0.2s;
     background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
     background-size: 400%;
     font-size: 30px;
@@ -174,6 +167,47 @@
     -webkit-background-clip: text;
     animation: text-animate 8s linear;
     animation-iteration-count: infinite;
+}
+.start-game-button:hover{
+    background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+    background-size: 400%;
+    font-size: 45px;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+@keyframes text-animate{
+    0%{
+        background-position: 0%;
+    }
+    100%{
+        background-position: 400%;
+    }
+}
+
+.subtitle{
+    position: absolute;
+    top: 41%;
+    transform: translateY(-41%);
+    transform: rotate(-25deg);
+    right: 20%;
+    background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+    background-size: 400%;
+    font-size: 15px;
+    letter-spacing: 5px;
+    font-weight: 700;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: subtitle-animate 1s linear;
+    animation-iteration-count: infinite;
+}
+@keyframes subtitle-animate{
+    0%{
+        font-size: 15px;
+    }
+    50%{
+        font-size: 20px;
+    }
+   
 }
 
 
