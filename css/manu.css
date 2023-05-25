@@ -1,69 +1,164 @@
 *{
-  margin : 0;
-  padding:0;
-  font-family: 'Press Start 2P', cursive;
-  margin: 0px;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-
-.main-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-self: center;
-}
-
-.title-base{
-    position: absolute;
-    top: 40%;
-    transform: translateY(-40%);
-    font-size: 70px;
-    letter-spacing: 5px;
-    font-weight: 700;
-    color:white;
-}
-
-.title-rgb{
-    position: absolute;
-    top: 39%;
-    transform: translateY(-40%);
-    /* right: 428px; */
-    background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
-    background-size: 400%;
-    font-size: 70px;
-    letter-spacing: 5px;
-    font-weight: 700;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    animation: text-animate 8s linear;
-    animation-iteration-count: infinite;
-}
-@keyframes text-animate{
-    0%{
-        background-position: 0%;
-    }
-    100%{
-        background-position: 400%;
-    }
-}
-.start-game-button{
-    position: absolute;
-    top: 60%;
-    transform: translateY(-60%);
-    background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
-    background-size: 400%;
-    font-size: 15px;
-    letter-spacing: 5px;
-    font-weight: 700;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    animation: subtitle-animate 1s linear;
-    animation-iteration-count: infinite;
-}
-
-
+    font-family: 'Righteous', cursive;
+    margin : 0;
+    padding:0;
+    margin: 0px;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  h1,h5,a,p.history-game-button{
+    font-family: 'Press Start 2P', cursive;
+  }
+  .main-content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: center;
+  }
+  
+  .title-base{
+      position: absolute;
+      top: 40%;
+      transform: translateY(-40%);
+      font-size: 70px;
+      letter-spacing: 5px;
+      font-weight: 700;
+      color:white;
+      transition: 0.3s;
+      
+  }
+  
+  .title-rgb{
+      position: absolute;
+      top: 39%;
+      transform: translateY(-40%);
+      /* right: 428px; */
+      background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+      background-size: 400%;
+      font-size: 70px;
+      letter-spacing: 5px;
+      font-weight: 700;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      animation: text-animate 8s linear;
+      animation-iteration-count: infinite;
+  }
+  .start-game-button{
+      position: absolute;
+      top: 55%;
+      transform: translateY(-55%);
+      transition: 0.2s;
+      background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+      background-size: 400%;
+      font-size: 30px;
+      letter-spacing: 5px;
+      font-weight: 700;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      animation: text-animate 8s linear;
+      animation-iteration-count: infinite;
+  }
+  .start-game-button:hover{
+      background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+      background-size: 400%;
+      font-size: 45px;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+  }
+  .continue-game-button{
+      position: absolute;
+      top: 60%;
+      transform: translateY(-60%);
+      transition: 0.2s;
+      background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+      background-size: 400%;
+      font-size: 30px;
+      letter-spacing: 5px;
+      font-weight: 700;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      animation: text-animate 8s linear;
+      animation-iteration-count: infinite;
+  }
+  .continue-game-button:hover{
+      background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+      background-size: 400%;
+      font-size: 45px;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+  }
+  .history-game-button{
+      position: absolute;
+      top: 65%;
+      transform: translateY(-65%);
+      transition: 0.2s;
+      background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+      background-size: 400%;
+      font-size: 30px;
+      letter-spacing: 5px;
+      font-weight: 700;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      animation: text-animate 8s linear;
+      animation-iteration-count: infinite;
+      cursor: pointer;
+  }
+  .history-game-button:hover{
+      background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+      background-size: 400%;
+      font-size: 45px;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+  }
+  
+  @keyframes text-animate{
+      0%{
+          background-position: 0%;
+      }
+      100%{
+          background-position: 400%;
+      }
+  }
+  
+  .subtitle{
+      position: absolute;
+      top: 41%;
+      transform: translateY(-41%);
+      transform: rotate(-25deg);
+      right: 20%;
+      background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
+      background-size: 400%;
+      font-size: 15px;
+      letter-spacing: 5px;
+      font-weight: 700;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      animation: subtitle-animate 1s linear;
+      animation-iteration-count: infinite;
+      display: none;
+  }
+  @keyframes subtitle-animate{
+      0%{
+          font-size: 15px;
+      }
+      50%{
+          font-size: 20px;
+      }
+     
+  }
+  /* ---------------------------History-Display-Part--------------------------- */
+  .history-display-class .container{
+      display: flex;
+      flex-direction: column;
+      font-size: small;
+      text-align: left;
+  }
+  .match-item{
+      margin: 10px 0px 0px 0px;
+  }
+  
+  
+  
