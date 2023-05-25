@@ -70,8 +70,8 @@
   }
   .continue-game-button{
       position: absolute;
-      top: 60%;
-      transform: translateY(-60%);
+      top: 62%;
+      transform: translateY(-62%);
       transition: 0.2s;
       background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
       background-size: 400%;
@@ -92,8 +92,8 @@
   }
   .history-game-button{
       position: absolute;
-      top: 65%;
-      transform: translateY(-65%);
+      top: 69%;
+      transform: translateY(-69%);
       transition: 0.2s;
       background:linear-gradient(90deg, #ff0000,#ffff00,#ff00f3,#0033ff);
       background-size: 400%;
